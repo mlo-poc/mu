@@ -13,5 +13,5 @@ Depends: ${python3:Depends}, ${misc:Depends}, python3-pyqt5.qtserialport
 Description: A simple editor for beginner programmers
  A very simple code editor for kids, teachers and beginner programmers.
  It's written in Python and works on Windows, OSX, Linux and Raspberry Pi.
- 
- This Version contains the Calliope-Extension written by the Calliope Team - find it in https://github.com/calliope-edu/mu
+ This Version contains the Calliope-Extension written by the Calliope Team
+  - find it in https://github.com/calliope-edu/mu
