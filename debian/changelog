@@ -1,3 +1,4183 @@
+mu (1.0.0~beta9) UNRELEASED; urgency=medium
+
+  [ Tim Golden ]
+  * Produce a functionally equivalent make.py which implements the same targets as the current makefile but requires nothing beyond the stdlib
+  * PEP8 tweaks plus make sure that make.py check checks make.py!
+  * Apparently FileNotFoundError is Windows-specific. Who knew!?
+  * Nudge the use of Python 3 for the make file
+  * make.py works on Linux
+  * Add a shim to allow NSIS-installed PyQt5 to run in a venv. Pass the correct parameter when removing files
+  * Remove shim from app
+  * Make make Windows-friendly by adding a .cmd file (invokable simply as "make") Remove catch-all *args where not applicable. Where arguments *can* be passed through, give them a more meaningful name
+  * Update the README to emphasise the use of virtual environments Have the Python make file mimic the output of the Makefile version
+
+  [ Nicholas H.Tollervey ]
+  * Fix selection of Python runtime for Python runner, update broken setup.py.
+
+  [ Serge Schneider ]
+  * Update Debian packaging files
+
+  [ Nicholas H.Tollervey ]
+  * Fix Windows path related errors that interfered with the debug runner.
+  * Bump to beta 9, revised README.
+  * Beta 10. Added save as feature, updated a bunch of minor things.
+  * Fixed duplicate line in test.
+  * Python3 REPL refactor to make it an out-of-process iPython kernel.
+  * Save As is now enabled by double clicking the filename in the tab, or CTRL-SHIFT-S shortcut.
+  * Back to 100% test coverage.
+  * Refactor debugger. Ensure CWD for REPL is mu_code. Make a start on documentation.
+  * Add additional Raspberry Pi related APIs.
+  * Update to latest version of micro:bit runtime. Fix problem with RPi styles.
+  * Add a Raspberry Pi specific requirements.txt for easier installation.
+  * Doc styling and navigation sorted for developer docs.
+  * Add CHANGES to the developer docs.
+
+  [ Romilly Cocking ]
+  * Explained special developer installation prerequisites for the Raspberry Pi.
+
+  [ ladyada ]
+  * fix for https://github.com/mu-editor/mu/issues/302 - still pops up error boxes but at least doesnt quit!
+  * fix for https://github.com/mu-editor/mu/issues/281 Tested with CircuitPlayground. Microbit is unaffected
+
+  [ Nicholas H.Tollervey ]
+  * Developer documentation WiP
+  * Minor edits to comments. Back up to 100% test coverage ;-)
+  * Minor updates (python3-dev) and Makefile related corrections.C
+
+  [ ladyada ]
+  * hand checked all PIDs with circuitpy 2.1 :)
+
+  [ Nicholas H.Tollervey ]
+  * Fixed PEP8 whitespace warning.
+
+  [ ladyada ]
+  * minor typo in multiline comment
+  * very rough start, just adding button and pane
+  * plotter kinda works but needs data parsing assistance, and isnt resizing yet
+  * parsing works now, looks for data between newlines. but needs optimization around the "for i in p_list: self.series.append(*i)" line, it really slows down redraws
+  * redo resizing later
+
+  [ Nicholas H.Tollervey ]
+  * Tests pass, need to get test coverage back up to 100%
+  * Fixed problems identified by PyFakes.
+
+  [ pydo ]
+  * Add chinese
+  * 中文po对应的mo
+
+  [ Nicholas H.Tollervey ]
+  * Tests back up to 100%.
+  * Bumped version to beta.13.
+  * Added CHANGES entry for 1.0.0.beta.13 release.
+
+  [ ladyada ]
+  * add more boards
+
+  [ Anthony Sottile ]
+  * Update deadsnakes ppa name
+
+  [ pydo ]
+  * instructions of translations
+
+  [ Nicholas H.Tollervey ]
+  * Updated documentation with screenshots for translation.
+  * Fixes #316 (file load now works with .py and .PY files).
+  * Updated copyright on docs to 2018.
+  * Minor documentation refactor.
+  * Reverse regression introduced in recent changes effecting README.rst
+  * Documentation revisions to make for a simpler README.
+  * Fix README typo. Doh!
+  * Update README heading.
+  * Integrated AUTHORS into the docs.
+  * Link to Raspberry Pi.
+  * Minor revisions to the architecture documentation.
+  * Added a little more detail to the README.
+
+  [ Nicholas Tollervey ]
+  * Create ISSUE_TEMPLATE.rst for inexperienced submitters.
+
+  [ Nicholas H.Tollervey ]
+  * Fix broken link.
+  * Added a SerialLink class to handle and manage a serial link to a device.
+  * Remove serial from the MicroPythonREPL pane.
+  * Add note about potential for missing pygettext.py command (and suggest a fix.
+  * WiP
+  * If you squint, it sort-of works. ;-)
+
+  [ Serge Schneider ]
+  * debian: install desktop entry
+
+  [ Nicholas H.Tollervey ]
+  * Packaging for Windows using pynsist.
+  * Fix test suite in light of pynsist work.
+  * Integrate new app runner pane into Mu. Ensure Windows installer works on 32bit and 64bit. Comprehensive documentation update.
+  * Bump to version 1.0.0b14.
+  * Ensure GIT ignres .pytest_cache.
+
+  [ Martin O'Hanlon ]
+  * update raspberry pi setup
+
+  [ Cefn Hoile ]
+  * Make it possible to launch mu like python3 -m mu
+  * More canonical main invocation, to enable Travis CI test coverage
+
+  [ Nicholas H.Tollervey ]
+  * Various minor bug fixes.
+  * Omit __main__.py from coverage report.
+  * Add Pygame Zero mode.
+  * Remove branch from appveyor builds.
+  * Capitalisation correction.
+
+  [ Tim Golden ]
+  * Fix tiny typo
+
+  [ Nicholas H.Tollervey ]
+  * Added docs to mention running Mu with the -m flag.
+  * Fix merge from master
+  * Resizing plotter, synced with latest master.
+
+  [ ladyada ]
+  * add pirkey
+
+  [ Nicholas H.Tollervey ]
+  * Code quality cleanup
+  * Fix unit tests.
+  * It works (but everything is broken in the test suite). :-)
+  * Tests pass, TODO: 100% coverage of refactored code.
+  * 100% test coverage.
+  * Doc cleanup and fix PyQtChart dependencies for Windows.
+  * Clean up .appveyor and add PyQtCharts to setup.py.
+  * Remove plotter branch from appveyor.
+  * Add a guard around the availability of Pygame Zero when listing modes.
+
+  [ Nicholas Tollervey ]
+  * Fix tests to work on OSX
+
+  [ Nicholas H.Tollervey ]
+  * Handle address related errors when connecting to the debug runner.
+  * Add a guard for the user stopping a process runner that's not finished setting up.
+  * Update to latest versions of dependencies.
+  * Update numpy dependency in Windows installer.
+  * 1.0.0.beta.15
+  * Add non blocking flashing.
+  * Add changelog.
+  * Add guard around debug runner to ensure filename is passed as an argument.
+
+  [ Tim Golden ]
+  * Recommend that the stdlib venv be used on Windows
+
+  [ Martin O'Hanlon ]
+  * updated setup.rst
+
+  [ Nicholas H.Tollervey ]
+  * Added website related developer docs.
+  * Add section on GIF based screen captures.
+  * Added animated GIF related CSS class information.
+
+  [ pydo ]
+  * up pyzero dependency to the latest version 1.2
+
+  [ Martin O'Hanlon ]
+  * resolve issue 361
+  * added test
+
+  [ carlosperate ]
+  * CI mac: Update OS X version of Travis builds
+  * CI mac: Update installed Python version to 3.6
+  * CI mac: Update mu and build dependencies
+
+  [ Daniel Pope ]
+  * Replace Pygame Zero icon with current logo
+
+  [ Nicholas H.Tollervey ]
+  * Minor code cleanup
+  * Doc updates, appdirs dependency added, updated to latest uflash.
+  * Add updated Chinese translation. Thanks to @yonghuming for this work!
+  * Update to latest sip version.
+  * Use absolute path to locale.
+  * Ensure the y-range on the plotter axis is meaningful and sensible. Fixes #375.
+
+  [ Zander Brown ]
+  * Constancy between the three themes
+  * Indicate the mode and logs 'buttons' are clickable
+
+  [ Nicholas H.Tollervey ]
+  * Separate out session and settings configuration. Fixes #358 and gives more flexibility.
+  * Fix problem with missing tests/session.json file.
+
+  [ carlosperate ]
+  * CI Linux: Enable tests on the Linux Travis builds
+  * CI Linux: Only deploy Linux build on Python 3.6
+
+  [ Tim Golden ]
+  * Refactor to use a few manifest constants; this should help make testing easier
+  * Tidy up a slightly misleading support function
+
+  [ Zander Brown ]
+  * Allow dropping files
+
+  [ Nicholas H.Tollervey ]
+  * Enforce tests are run in a random order (and fix unwanted coupling between tests).
+  * Add 'mode' button to main button bar in Mu. Many first-time users complained that it wasn't obvious how to change mode.
+
+  [ Tim Golden ]
+  * Tests now passing for reading / writing newlines; reading encodings
+  * Complete tests for reading & writing files accounting for encodings and newlines This adds supprting code and  tests for that code but doesn't touch the existing Mu implementation
+  * Remove some mostly-unrelated changes to reduce the change of a merge conflict
+  * Shift the i18n support up to the package level which has the effect of making mu.logic able to be imported independently
+  * gettext no longer needed in conftest as it's imported at the package level
+
+  [ Nicholas H.Tollervey ]
+  * Ensure tkinter is included as a dependency in the Windows build. Update to include all the requested packages from RPi Foundation.
+  * Remove branch for building by appveyor.
+  * Doc related updates concerning tkinter etc packages.
+
+  [ Tim Golden ]
+  * Bring the existing make.py commands in line with their Makefile equivalents
+
+  [ Nicholas H.Tollervey ]
+  * Add missing dependencies for requests to Windows packaging configuration.
+  * Mention how to create shortcuts.
+
+  [ Tim Golden ]
+  * Start to add support for translate/translateall
+  * Add some missing commands Cut back on the output which tends to hide where the problems are And... run make.py on make.py and fix up the resulting warnings!
+
+  [ Nicholas H.Tollervey ]
+  * Appease the god of PEP8.
+
+  [ Tim Golden ]
+  * Add support for the translate command
+
+  [ Nicholas H.Tollervey ]
+  * Fix typo.
+  * Use make to build Windows installers with Appveyor.
+
+  [ Tim Golden ]
+  * Standard checks now passing
+
+  [ Nicholas H.Tollervey ]
+  * Final test in Appveyor build uses make check.
+
+  [ Tim Golden ]
+  * Merge the logic file read/write tests back into test_logic.py at @ntoll requests.
+  * Housekeeping
+  * Start to refactor session load/save tests. These tests are somewhat brittle, relying on mocking the builtin open and then assuming a pattern of usage which is confounded by the new load_and_decode/save_and_encode work to manage encodings and line-endings.
+
+  [ carlosperate ]
+  * Change unicode arrow included in the check markers text
+
+  [ Tim Golden ]
+  * Refactor a sample test even further, pushing the logic into the support module which patches get_session_filename
+  * Have the various subcommands return their process exit code. This will then cascade up to the original sys.exit and can form the basis for a pass/fail from outer processes (eg CI)
+  * Refactor test_editor_restore_session_invalid_mode
+  * Slightly tweak some of the testing support functions
+  * Merge the test-support code into test_logic to try to keep to the preferred one-testing-file approach
+  * Get all tests passing after implementing the new save/load-with-encoding functionality
+  * Minor issues from running make check
+  * Fix a couple of pieces of unreachable code
+
+  [ Nicholas H.Tollervey ]
+  * Updated MicroPython runtime for micro:bit.
+  * Use 'mu-editor' instead of 'mu' as the command to launch mu.
+
+  [ Tim Golden ]
+  * Simplify the common case of generating a single (possibly empty) Python file
+  * Add tests for load/save preserving newlines
+  * PEP8 fix
+  * Add design notes around the encoding / newline changes
+  * The bare .assert_with was only introduced in 3.6 and we need to be 3.5-compatible.
+
+  [ Nicholas H.Tollervey ]
+  * Log the absence of QCharts.
+  * Fix bug in the way files, repl and plotter buttons interact when enabling/disabling.
+  * Final tidy-ups
+  * Fix test that could read from real session file by accident.
+  * Ensure filetypes are case insensitive, and unknown filetypes are reported.
+  * Update to latest uflash.
+
+  [ Zander Brown ]
+  * Revert "Indicate the mode and logs 'buttons' are clickable"
+
+  [ Nicholas H.Tollervey ]
+  * Add nudatus to contrib for later minification work.
+  * Fix tab closing bug #304.
+  * Add docs about USB/serial permissions and drivers to developer setup.
+  * Fix verbose logging on device discovery.
+
+  [ Zander Brown ]
+  * Write some tests for file dropping
+
+  [ Nicholas H.Tollervey ]
+  * UI/CSS changes to make the tabs more tab-y and the contrast in dark theme better.
+  * Minor tidy-ups to appease the 'make check' gods.
+  * Refactor to turn the logs dialog into a very simple admin dialog so users can specify things like custom environment variables.
+  * Add envar support to debug runner.
+  * Make font colour for day theme tabs default to black.
+  * Ensure REPL has user defined environment variables available to it.
+
+  [ Tim Golden ]
+  * Do just enough to get tests passing with no encoding
+  * All tests pass after removing code to insert an encoding cookie
+  * All tests pass no we're no longer writing our own encoding cookie
+  * Make the error message which pops up on a decoding failure actually spell out which encodings were attempted
+  * Revert "Do just enough to get tests passing with no encoding"
+
+  [ Nicholas H.Tollervey ]
+  * Allow mode selection to respond to double-clicks. Fixes #410.
+  * Normalise passed in filename to absolute path.
+  * Use OS specific absolute paths in session file.
+
+  [ Tim Golden ]
+  * Update the file-loading design note to reflect the newer thinking on encoding cookies
+  * Ensure that non-western text can be logged
+
+  [ Zander Brown ]
+  * Take a little more care opening files from arguments
+  * Add a cli open test
+  * Use samefile rather than string comparision to check already open files
+  * Fix a regression and improve logging
+
+  [ Nicholas H.Tollervey ]
+  * Fix breakage with passed file.
+
+  [ Tim Golden ]
+  * Open logging for output as utf-8; this enabled non-Western editor contents to be written to log under western Windows (where the default is, eg, cp1252)
+  * Now with passing tests!
+
+  [ Zander Brown ]
+  * Logic belongs in logic. move it there
+  * Further refactoring
+
+  [ Tim Golden ]
+  * Refactor to remove encoding cookie
+
+  [ Zander Brown ]
+  * Style context menus
+  * Set some QApplication properties
+  * Create a minimal appdata.xml
+
+  [ Nicholas H.Tollervey ]
+  * Add some contrast to the border in night mode.
+  * Fix breaking test.
+  * PEP8
+
+  [ Zander Brown ]
+  * Renaming files according to proposed appid
+
+  [ Nicholas H.Tollervey ]
+  * Add comments, minor refactor (to simplify) and add more tests for sake of robustness.
+  * Add plotter button to Python 3.
+  * Fix plotter related problems in #415.
+  * Fix for #416.
+
+  [ Tim Golden ]
+  * Make sure that test failure modes happen correctly on Windows
+
+  [ Carol Willing ]
+  * Alphabetize requirements
+  * edit style for readability and maintainability
+  * update test for simplified error message
+
+  [ Frank Morton ]
+  * add addfruit "mount" location search support
+  * add addfruit "mount" location search support
+  * add addfruit "mount" location search support
+
+  [ Zander Brown ]
+  * Close button icons
+  * Set the close icons
+  * Little more contrast on the close icon
+
+  [ Tim Golden ]
+  * Detect an invalid codec in an encoding cookie
+  * Trap an inability to encode all characters in the text
+  * Add a test for the log-and-fallback logic when an invalid codec is specified in the encoding cookie
+
+  [ Nicholas H.Tollervey ]
+  * Style updates
+  * Remove year from splash screen.
+  * Add test for /sbin/mount.
+
+  [ Zander Brown ]
+  * Alter the close icon to be more central
+
+  [ Tim Golden ]
+  * Add a test for a file which cannot be saved for reasons of encoding
+  * Small fixups arising from testing
+  * Ensure that make check moves down below the topmost folder!
+  * Appease the codestyle / pyflakes gods
+
+  [ INACHI Minoru ]
+  * Add japanese translate file.
+
+  [ Tim Golden ]
+  * Add the newer PR
+
+  [ carlosperate ]
+  * CI Windows: Clean up AppVeyor file
+
+  [ Nicholas H.Tollervey ]
+  * WiP
+  * Fixes #431 by handling OSError, logging the exception and add some context as a comment.
+  * Add more (specific) unit tests and fix docstring.
+  * Refactor to use logger.exception.
+  * Test coverage up to 100%
+  * Simple (but effective) measures to avoid flooding the plotter with data thus causing Mu to become unresponsive.
+  * Added tests.
+  * Appease the PEP8 gods...
+  * Update README and setup so trove categories are correct and logo works with PyPI.
+  * Fix #432.
+  * Fix OSX install scripts for Travis.
+
+  [ carlosperate ]
+  * Update setup.py to be able to install from source on Raspberry Pi
+
+  [ Nicholas H.Tollervey ]
+  * Add micro:bit admin tab to allow for minification and custom runtime configuration.
+
+  [ Zander Brown ]
+  * Inital play with button styling
+  * Fix tests
+
+  [ Nicholas H.Tollervey ]
+  * Documentation update.
+
+  [ Zander Brown ]
+  * Set modal dialogs parent
+  * Further work styling dialog buttons
+
+  [ Nicholas H.Tollervey ]
+  * Add reference to https://madewith.mu/.
+  * Appease the LGTM alert gods.
+  * Set start_of_current_line on newline (and associated test adjustment). Fixes #442
+  * Disable CTRL-C and CTRL-D in PythonProcessPane when the child process is finished.
+  * Enforce UTF-8 on loading of log files. Fixes potential breakage in Windows.
+  * Fix missing *args in _append_plain_text. Fixes #444.
+  * Add correct handling of delete/backspace to Python runner pane (and tests). Fixes #225 for Python 3 mode.
+
+  [ Carlos ]
+  * Update requirements_pi to includ missing dependencies
+
+  [ Zander Brown ]
+  * Preselect the current mode
+  * Give text areas in admin dialog a border
+  * Rearange minify logic
+  * Updates tests
+  * PEP8 again
+  * Catch tokenerrors
+  * Test everything!
+  * Missed some whitespace
+
+  [ microbit-carlos ]
+  * If a new device is connected ask the user if they want to change mode
+  * Fix assertions in older Python versions
+
+  [ Nicholas H.Tollervey ]
+  * Add Mu related swag assets.
+  * Update description to match the one in the README.
+  * Fix debian related gremlin.
+  * Modify message slightly to remove redundant text. Ensure removed devices are tracked.
+
+  [ carlosperate ]
+  * Fix missing asserts on test_logic.py
+
+  [ Nicholas H.Tollervey ]
+  * Top sekret t-shirt designs for people who have contributed.
+  * Update Makefile output to mention win32/win64 build commands.
+
+  [ Zander Brown ]
+  * Don't try to size menus
+
+  [ Nicholas H.Tollervey ]
+  * Fix for #454 so interaction with the micro:bit file system is much more robust.
+  * Fixes the dangling filesystem panes when changing modes mentioned in #460.
+  * Fix dangling plotter pane when changing modes.
+
+  [ carlosperate ]
+  * Let microfs manage its serial connection and other serial updates
+
+  [ Nicholas H.Tollervey ]
+  * Fix crash when trying to close a non-existent serial link after closing the iPython REPL.
+  * Add asset buttons for music and fonts to PyGameZero mode.
+
+  [ ladyada ]
+  * add crickit
+  * add some upcoming boards
+
+  [ Nicholas H.Tollervey ]
+  * Remove trailing whitespace to appease the PEP8 gods.
+
+  [ carlosperate ]
+  * Check for exceptions when trying to check the locale
+
+  [ Nicholas H.Tollervey ]
+  * Fix annoying popup windows and broken locale detection in help button.
+  * Quicker splash screen.
+  * Fix stye fail.
+  * Update Adafruit mode to rename REPL -> Serial (at request of Adafruit).
+
+  [ microbit-carlos ]
+  * Add option for the Mu modes to attempt to open a file
+  * Allow modes to expand the file extensions available to open
+  * Add tests for Mu modes attempting to open a file
+
+  [ Nicholas H.Tollervey ]
+  * First attempt at automating the build of an installable via dmg image.
+  * Appease the PEP8 and Flake8 gods.
+  * Try building again with a virtualenv to avoid brew/pip related fubar.
+  * Doh, install virtualenv.
+  * Fix Makefile to ignore venv.
+  * Ignore venv for PyFlakes.
+  * Another attempt to fix the DistUtilsOptionError.
+  * User --user with pip3
+  * *sigh* Go home Travis, you're drunk. :-/
+  * More pip configuration.
+  * Use simplified Python setup.
+  * Travis bleh
+  * Travis 1, me 0
+  * Venv
+  * Ugh... -p option for mkdir
+  * Only upload for OSX
+  * Try with virtualenv only.
+  * Make upload only for OSX
+  * Add flag for deployment.
+  * Add flag for deployment.
+  * Only deploy on OSX.
+
+  [ Tim Golden ]
+  * Ensure embedded process is run with UTF-8 encoding on stdout/err
+
+  [ Nicholas H.Tollervey ]
+  * Update dev docs to correct usage of Mode button.
+  * Remove capitalization of annotated messages which may create confusing output for the user. Fixes #474.
+  * Appease the PyFlake gods.
+  * update to 1.2.4 of microfs (fixes bug with GET operation).
+  * Update tests in light of #471.
+
+  [ carlosperate ]
+  * Minor nitpickings: Deprecated method, remove temp import workaround
+
+  [ Nicholas H.Tollervey ]
+  * Fix MicroPython based DELETE key handling in the REPL. FINALLY fixes #225
+  * Simplify the README.
+  * Fix non-ascii character problem with the PythonProcessPane. Fixes #475.
+  * Use custom version of Python 3.
+
+  [ Gérald Quintana ]
+  * Add french translation
+  * Bug fix french translation
+
+  [ Nicholas H.Tollervey ]
+  * Use latest uflash.
+  * Use lastest version of uflash.
+
+  [ Stephen Stagg ]
+  * As per https://github.com/jacobslusser/ScintillaNET/issues/279, scintilla is quite sensitive to when the margin colors are set.  By moving the call to setMarginsBackgroundColor() after setLexer(), changing the theme now updates the margin background and foreground colours
+  * Make toolbar icons crisp on OSX / HiDPI dispkays
+  * Fix mock call count in tests
+
+  [ Nicholas H.Tollervey ]
+  * Change the way the debugger is launched so it doesn't rely on an 'installed' script.
+  * Final cleanups for testing.
+  * s/path/filename :-/
+  * More typo correction.
+  * Use absolute path.
+  * Newline...
+  * More updates... TODO: fix tests.
+  * Fixed tests. Check automated build on Travis.
+  * Change how PGZero is launched. TODO: Add tests.
+  * Add working tests.
+  * Update Makefile to delete assets created when packaging on OSX.
+
+  [ Zander Brown ]
+  * Translateable untitled
+
+  [ Nicholas H.Tollervey ]
+  * Initial work and tests for debug related problems.
+  * Build for OSX
+  * Add guard to removal of breakpoint while debugger is running.
+  * Update to latest build of stand-alone Python for OSX.
+  * Fix Windows path related issues with the debugger.
+  * Correctly handle tabs with no paths set yet.
+  * Fix OSX build to use new path.
+  * Bump embedded Python version in OSX.
+  * Bump OSX portable Python to 0.0.5
+  * Fix broken test and rely on __file__ as source for Mu directory.
+  * Directly reference app rather than via the mu namespace.
+  * Add version information for developer setup on Raspberry Pi.
+  * Revert problem introduced by relative path in mu-debug.
+  * Remove un-needed branch reference from Travis build definition.
+  * Fixes #345. Fixes #491. Update debugger behaviour when handling breakpoints and breakpoint markers.
+  * Fixes #486. Ensure it's not possible to transition to a new mode when the game is running.
+  * Fixes #450. Ensure newlines pasted into MicroPython REPL appear as \r no matter the platform running Mu.
+
+  [ carlosperate ]
+  * makep.py: Check for return codes
+
+  [ Nicholas H.Tollervey ]
+  * Fixes #160. Ensure the first line with problems is always shown when checker is run.
+  * Add details of OSX packaging and update Linux related packaging information.
+  * Fixes #493. Ensure markers are only added if the current tab's path is the same as the filename associated with the newly created breakpoint.
+  * Fixes #494. Ensure removal of line highlighting happens before we know the state of the next highlighted line.
+  * Ensure set_trace is only called on script start in the absence of any breakpoints.
+  * Add YouTube videos to developer docs.
+  * Update CHANGES to reflect beta.16 release.
+  * Bump version to beta.16.
+
+  [ Zander Brown ]
+  * Context menu for local file listing
+  * Testing this is tricky
+  * Test the actual menu
+  * Back to 100% tests
+  * Style update
+  * Make Admin & Mode Dialogs properly modal
+
+  [ Gérald Quintana ]
+  * Update translation for 1.0b16
+
+  [ Nicholas H.Tollervey ]
+  * Add find/replace functionality triggered by Ctrl-F.
+  * Shelving new-flash
+  * Add system-wide installation information for Windows.
+  * Shelve
+  * Add dependencies for Matplotlib in OSX
+  * Shelve
+  * Use pyenv to install Python 3.6.5.
+  * More brew related fixes.
+  * try to specify Python 3.6 in travis for OSX
+  * Drop brew.
+  * Check Python version
+  * Re-add brew, alias python3 and hope the damn thing works
+  * Brew install Python 3.6 from GitHub raw URL.
+  * Implement new (faster) flash functionality.
+  * Handle hex files to be saved onto the local filesystem.
+  * Handle case where user provides a path on the local file system.
+  * Add Ctrl-K as toggle comments on selected text. Fixes #516.
+
+  [ Zander Brown ]
+  * QFileDialog should have the window as it's parent
+  * Update night & contrast for changes in day
+
+  [ Nicholas H.Tollervey ]
+  * Improve and refactor comment toggling with Ctrl-K.
+  * On file save, check for shadow modules. Fixes # 363.
+  * Udate package to PyQt5.11 and other latest releases.
+  * Update osx_image to use OSX 10.11 (PyQt no longer supports version lower than this).
+
+  [ Zander Brown ]
+  * Simplify & fix tests
+
+  [ Nicholas H.Tollervey ]
+  * Ensure the old mode is reset as expected upon change of mode. Fixes #526.
+
+  [ Zander Brown ]
+  * 🤦 Actually fix the test
+
+  [ Nicholas H.Tollervey ]
+  * Try different way to update Python to 3.6 on OSX in Travis.
+  * Try pyenv for specifying use of Python 3.6.5
+  * Try again with travis and 3.6/
+  * List installed version via pyenv.
+
+  [ Zander Brown ]
+  * Style scrollbars
+
+  [ Nicholas H.Tollervey ]
+  * Force eval of pyenv init.
+  * Don't use a virtualenv in OSX.
+  * Try a different compression.
+  * Zip up .app to get around dmgbuild errors.
+  * Fix pep8... Ugh.
+  * Recursive zip of app directory.
+
+  [ Zander Brown ]
+  * Apply theme application wide
+  * We don't need to pass the theme around all the time
+  * Fix tests
+
+  [ Nicholas H.Tollervey ]
+  * Revert compression algorithm in dmg.
+  * Fixed #532. The set_trace method didn't correctly set the frame. The set_step method does the right thing in the context of the script to be debugged.
+  * Fix for #531. The handling of user created exceptions was actually never handled.
+  * Comment fix for exception handling in the debugger.
+  * Fix merge-related munging of tests.
+  * There should be a single source of truth for a Python script's max length: uflash.
+  * Add missing normcase.
+  * Ensure tests are OS file path agnostic.
+  * Make LC_ALL based test unix only.
+  * Update new flash functionality in prep for merging to master.
+  * comment update for tests.
+  * If Python script is empty, force flash of empty MicroPython runtime.
+  * Add license agreement to MacOS DMG.
+  * Stylistic cleanup of dmg_settings.py to appease the PEP8 gods.
+  * Validate version of MicroPython is semantic.
+  * Stop change-mode autodetection dialog from appearing if the user is already changing mode via the usual dialog.
+
+  [ Zander Brown ]
+  * Regain full test coverage
+
+  [ Nicholas H.Tollervey ]
+  * Bump version to 1.0.0.beta.17
+  * Update CHANGES for upcoming beta 17 release.
+
+  [ Zander Brown ]
+  * Style fixes
+
+  [ Gérald Quintana ]
+  * Updated translations for 1.0b17
+
+  [ Nicholas H.Tollervey ]
+  * Allez France!
+  * Explicit exception handling in utiity scripts for generating API documentation.
+  * Added release checklist/process information to the documentation.
+
+  [ carlosperate ]
+  * Add spanish translations
+  * Add spanish translation .mo file
+
+  [ Nicholas H.Tollervey ]
+  * Allow autogenerated .mo translation files in the Git repository.
+
+  [ Zander Brown ]
+  * Fix #541
+
+  [ INACHI Minoru ]
+  * Update Japanese translation for 1.0b17.
+
+  [ Nicholas H.Tollervey ]
+  * Update new flash to account for unknown micro:bit based devices.
+  * Fix debugger line highlighting off by one error (ObOE).
+  * Make user accessible string ready for i18n.
+
+  [ Zander Brown ]
+  * Bring consistancy to macOS tabs
+
+  [ INACHI Minoru ]
+  * Update Japanese translation for latest 1.0 candidate.
+
+  [ Nicholas H.Tollervey ]
+  * Fixes #549. If no serial connection to the micro:bit is available, revert to the old style flashing of the hex file with code appended to the end.
+
+  [ carlosperate ]
+  * Update spanish translations from PR comments
+  * Update spanish translation with latest strings
+  * Review and remove fuzziness from Spanish translations
+
+  [ Nicholas H.Tollervey ]
+  * Fixes #550. Use Qt's serial classes to get the device's serial number.
+  * Fixes #554. Modes specify module names to check for filename shadowing.
+
+  [ Tiago Montes ]
+  * Portugal's Portuguese (pt_PT) UI translation.
+  * Shorter debug stepping control button labels.
+
+  [ Zander Brown ]
+  * Debug items shouldn't be editable
+  * Style DockWidgets, cleanup TreeView a little
+
+  [ Nicholas H.Tollervey ]
+  * Fixes #558. If copying the main file fails because of IOError (serial), recert to old style flashing.
+
+  [ Zander Brown ]
+  * Fix blue bars
+
+  [ Nicholas H.Tollervey ]
+  * Update source location of i18n settings override.
+  * Revise LOC count in docs.
+  * Fix regression that stopped suggestion of mode when new device was plugged in.
+  * Release Candidate 1.
+  * Release Candidate 1 (now with added MicroPython).
+
+  [ Stephen Stagg ]
+  * Workaround for #552: Fix black text issue with qtscintilla
+  * Remove erroneous ~ from comment
+  * Fix tests by removing whitespace
+
+  [ Nicholas H.Tollervey ]
+  * Fix some hot-key related mistakes / duplications.
+
+  [ Tim Golden ]
+  * Invoke the standard save-and-encode logic to make sure we cope with non-ASCII unicode when running checks
+  * Add test to ensure that pycodestyle at least gets to see code which contains non-ASCII unicode characters (in this case a non-U+0020 space)
+  * Appease the PEP8 gods!
+
+  [ Nicholas H.Tollervey ]
+  * Code coverage pragma.
+  * Update API docs.
+  * Mitigate minor modal madness.
+  * Update to latest uflash.
+  * Add Actor class. TODO: Fix up autogenerated PyGame Zero API docs.
+  * Bump to version 1.0. Hurrah..!
+  * Fix names in Appveyor (doh).
+
+  [ reneraab ]
+  * Add German translation for Mu
+
+  [ Limor "Ladyada" Fried ]
+  * Add new Adafruit board
+
+  [ carlosperate ]
+  * Add to the log the detected language code
+  * Edit checks for OSX app bundles to be independent of app name
+
+  [ Douglas Temple ]
+  * File dialog boxes remember previous folder used
+
+  [ Tresonic ]
+  * Improved German translation
+
+  [ doanminhdang ]
+  * Add translation into Vietnamese
+
+  [ Martin Dybdal ]
+  * Make MicroPython REPL process_bytes disregard color escape sequences instead of crashing the editor
+
+  [ René Dudfield ]
+  * Error message in the setup.py for when python version is too old.
+
+  [ Marco A L Barbosa ]
+  * Copy pt_PT translation to pt_BR
+  * Update pt_BR translations (based on pt_PT)
+  * Use complete language_code instead of only 2 characters
+
+  [ ohiofi ]
+  * Added some Pygame Zero API docs
+
+  [ Zander Brown ]
+  * Move the cursor to the end of the initial content
+  * Quick workaround
+
+  [ Nick Morrott ]
+  * Update mu binary filename in XDG Desktop Entry
+  * Remove trailing whitespace in XDG Desktop Entry
+
+  [ Filip Korling ]
+  * Swedish translation
+
+  [ Nick Morrott ]
+  * Update StartupWMClass value in desktop file
+  * Address issues raised with appstreamcli validation
+
+  [ Carlos ]
+  * Add nudatus to setup.py
+
+  [ Nick Morrott ]
+  * Use standard <developer_name/> tag in appdata
+
+  [ JohnGuan ]
+  * Complete Chinese translation.
+
+  [ Nicholas H.Tollervey ]
+  * Add video creation from Git commits.
+  * Add/update roadmap (Mappa MUndi).
+
+  [ dfarning ]
+  * replaced deprecated logger.warn method with logger.warning
+
+  [ Nicholas H.Tollervey ]
+  * Fix for #602, where the UI becomes unresponsive due to IO flooding from a running sub-process.
+
+  [ Adam Jurkiewicz ]
+  * Polish translation
+
+  [ Nicholas H.Tollervey ]
+  * Update to latest version of MicroPython for micro:bit.
+
+  [ Filip Kłębczyk ]
+  * Polish translation of Mu
+
+  [ Timothy McCurrach ]
+  * Made day theme off-white with dark-grey
+  * Update tests to reflect changes in Font class defaults
+  * Update PythonProcessPane.parse_input to deal with newlines whilst the cursor is midline
+
+  [ Zander Brown ]
+  * Toolbar styles for #633
+
+  [ Adam Jurkiewicz ]
+  * Finished polish translation
+
+  [ Nicholas H.Tollervey ]
+  * Remove unused translation assets.
+  * Add quickstart to developer docs. A per feedback from the London Python sprint night.
+
+  [ Timothy McCurrach ]
+  * Reimplement JupyterREPL.set_font_size and update tests
+
+  [ Nicholas H.Tollervey ]
+  * Add tests for previous_folder attribute updates.
+  * Ensured Python 3.6 until PyQt fix their bug in the build for Python 3.5.
+  * Added test for empty language code.
+  * Update for 1.0.1 changelog.
+  * Update to uflash 1.2.3 (includes MicroPython 1.0.0 FINAL).
+  * Bump the version numbers to 1.0.1 pending final checks.
+  * Freeze to working version of briefcase so OSX app is created correctly.
+  * Revert to known working briefcase version to fix OSX build problems.
+  * Update to work with latest briefcase version for OSX builds.
+
+  [ Craig Steele ]
+  * Updating OSX to macOS in README
+
+  [ JohnGuan ]
+  * Improved Chinese translation.
+
+  [ Tiago Montes ]
+  * New language detection module, with macOS specific fallback detection.
+  * Refactored existing code to use common language detection code.
+  * Updated setup.py to include platform specific install requirements.
+  * Make pycodestyle happy wrt "E303 too many blank lines".
+  * Make LGTM happy about the unused, _prefixed, local variable.
+  * Ensure that macOS detected language code is a indeed a string.
+  * Refactored localedetect module, increasing testability.
+  * Make pyflakes happy wrt to an unused import.
+  * Progress on testing localedetect.language_code.
+  * Progress on testing platform specific localedetect.language_code.
+  * Minor corrections to previous commits on tests.
+  * Test for macOS platform specific language detection code.
+
+  [ Martin Dybdal ]
+  * Started work on an ESP8266/ESP32-mode, using AMPY (github.com/adafruit/ampy) for datatransfers
+  * Fixes necessary after pulling changes from mu/master
+  * Enable 'flash' button when closing 'files' pane
+  * Add thread lock on serial communication
+  * A bit of error handling when using pyboard.py
+  * Remove debug print of Python script while flashing
+  * ESP32 MicroPython API documentation (the essentials, not complete)
+  * Rename to ESP-Mode
+  * Abort if flashing does not complete within 15 seconds.
+  * Remove unnecessary import, add PyboardError import
+  * mu/modes/esp.py: Release lock if loading REPL failed.
+  * Fix issues with Pyboard not being able to interrupt programs before flashing
+  * Test suite for ESP-mode
+  * Fix long line.
+  * mu/contrib: Fix LGTM-warnings in files.py and pyboard.py
+
+  [ Tiago Montes ]
+  * Better platform specific install requires on setup.py.
+  * Make pycodestyle happy with test code.
+  * Moved localedetect module tests to their own module.
+  * Test that failures during locale detection result in 'en_GB'.
+  * Minor comment and name reviews in the localedetect tests.
+  * No longer need locale detection failure tests on test_init.py.
+  * Ask Travis to install Mu first.
+
+  [ Tim Golden ]
+  * Strip trailing spaces before any newline -- with tests
+  * Fix up PEP8 issues
+
+  [ carlosperate ]
+  * Update PyQt5 versions to restore Py3.5 compatibility
+  * Add environmental markers to setup.py to exclude unavailable packages in ARM
+  * Add environment markers to requirements.txt
+  * Add qtconsole to Raspberry Pi dependencies
+
+  [ wu6692776 ]
+  * Update main.py
+
+  [ Łukasz Langa ]
+  * Make pretty
+  * Add E203 to ignore, simplify Black call
+  * Make flake8 happy, add Black to dependencies
+  * Make Flake8 *even more* happy
+  * Tests should probably be happy, too.
+
+  [ Juan Biondi ]
+  * Fix typos to be singular-first person written.
+
+  [ Moritzheine ]
+  * Calliope mini mode for mu-editor
+
+  [ Moritz ]
+  * Update mu/logic.py
+
+  [ Moritzheine ]
+  * Calliope mini mode
+
+  [ Moritz ]
+  * calliope mini runtime changes
+  * Update mu/logic.py
+
+  [ Moritzheine ]
+  * Update logic.py
+
+  [ Moritz ]
+  * Style cleaning
+
+  [ Moritzheine ]
+  * Update .gitignore
+
+  [ Moritz ]
+  * Python stlye patch
+  * style patch
+  * style patch
+  * Update mu/logic.py
+  * Update mu/logic.py
+  * Update mu/interface/panes.py
+
+  [ Carlos Pereira Atencio ]
+  * Update mu/locale/es/LC_MESSAGES/mu.po
+
+  [ Juan Biondi ]
+  * Update mu.po
+
+  [ Moritz ]
+  * Update mu/logic.py
+  * Update mu/logic.py
+  * Update mu/logic.py
+  * Update mu/logic.py
+
+  [ JohnGuan ]
+  * Improved Chinese translation.
+
+  [ Moritz ]
+  * Fixes
+  * Update dialogs.py
+  * Fixes
+  * Update logic.py
+  * test files adaptation
+  * Fixes
+
+  [ wayoda ]
+  * Fix typos for locale de_DE
+
+  [ Tim Golden ]
+  * Bookmark what we're working on
+  * Python 3 & Debugger modes now hand off to the editor save_tab_to_file functionality
+  * PygameZero mode now hands off to the editor save_tab_to_file functionality
+  * Fix up "make check" grumbles
+  * Remove debugging probes Remove an unneeded set-modified
+  * Undo a change made as part of a previous approach
+
+  [ Moritz ]
+  * Runtime update
+
+  [ Tim Golden ]
+  * cf Issue #715
+
+  [ ladyada ]
+  * add generic vendor id to catch all adafruit boards
+  * add some more future PIDs
+  * try to fix some lints
+  * merry lintmas
+
+  [ Nicholas H.Tollervey ]
+  * Ensure, if there were bytes in the buffer for reading, keep reading until none are left.
+  * Schedule ASAP.
+  * Fix tests
+  * Fixes for splits in multi-byte characters (and associated tests).
+  * Add specific test for set_start_of_current_line.
+  * Add updated mu.mo for Spanish translation.
+  * Thanks to @tim-mccurrach for guard against too many QTimers for reading stdout.
+  * Update to the latest version of MicroPython/uflash for micro:bit.
+  * Fixes #701.
+
+  [ Tiago Montes ]
+  * Much simplified platform dependent language detection code.
+  * Cleanup the previously required rubicon dependency.
+  * Simpler tests for language detection code.
+  * Minor whitespace fixes to make pycodestyle happy.
+  * Removed test_gettext_translation and, thus, test_init.py.
+
+  [ Nicholas H.Tollervey ]
+  * Improved zoom. Fixes #640 #614 #553.
+  * Fixes #711. Ensure no mode change prompt if current mode is running code.
+  * Ensure it's not possible to append None to bytes.
+  * Bump version number.
+  * Ensure correct paths in Windows for sub-processes launched by Mu + fix minor zoom bug.
+  * Fix and test for creating USER_SITE if it doesn't already exist. Thanks to Tim for the pointers.
+
+  [ Nick Morrott ]
+  * Restore test randomisation
+
+  [ brentru ]
+  * adding particle argon to adafruit circuitpython mode
+  * adding xenon and boron to valid board list
+
+  [ Nicholas H.Tollervey ]
+  * File dialog will remember path last used. Fixes #480.
+  * Appease the TRAVIS gods (to the lowest currently supported version of XCode).
+  * More OSX related Travis configuration.
+  * *sigh* Yet more Travis faffing about for OSX.
+  * Travis de-faffing
+
+  [ Tiago Montes ]
+  * Fix selection match highlights with non-ASCII editor contents.
+
+  [ doanminhdang ]
+  * update license of Vietnamese translation to GPL v3
+
+  [ Nicholas H.Tollervey ]
+  * Remove un-needed print statement which *could* cause encoding issues.
+  * Fixes #743, a guard against encoding problems with the print statement.
+
+  [ ShawnHymel ]
+  * Updated test_client.py to check for equality on bp.ignore and added support for SparkFun SAMD21 Dev and Mini Breakout boards
+  * Removed unused white space between VID/PID sections
+
+  [ Tiago Montes ]
+  * Mu window can now be as small as 1/2 screen width/height.
+  * Window position and size now saved/restored on quit/relaunch.
+
+  [ Nicholas H.Tollervey ]
+  * First draft and tests for simple support for third party packages.
+  * Ensure a reference to self.process
+  * Fix layout issues.
+  * Allow REPL access to third party modules installed via Mu.
+  * Add PyPI clarification to UI instructions.
+  * Deal with different case module name / module directory and ensure all directories that don't contain any files are removed.
+  * Fix PYTHONPATH generation from sys.path to use os.pathsep.
+  * Remove no-longer-needed Darwin specific PYTHONPATH munging.
+  * Fix to make correctly normalised package names for use with filesystem.
+  * Packaging is disabled on Raspberry Pi.
+
+  [ Tiago Montes ]
+  * Highlight matched selections with non-ASCII word characters.
+  * Test for match selection highlight with non-ASCII editor contents.
+  * Test for match selection highlight with non-ASCII selection.
+  * Refactored matched selection highlights tests.
+  * Single, parametrized, matched selection highlights test.
+  * Much simpler locale detection, now relying on Qt's QLocale.
+
+  [ Tim Golden ]
+  * Have Python3 mode run in the code file's directory
+  * Have various modes run in the same directory as the code file
+  * Update existing tests
+  * Appease the line-length gods
+
+  [ Tiago Montes ]
+  * Test that Mu's window min size is set to 1/2 the screen width/height.
+  * Test that Mu's window is not sized on setup.
+  * Fix quit tests and ensure that window geometry is saved on quit.
+  * Test that window geometry is restored if saved in the session.
+  * Test that window geometry is set to default if not saved in the session.
+
+  [ Nicholas H.Tollervey ]
+  * Fix message in 3rd party tab for RPi users. Fix unicode problem from METADATA.
+  * Fix failing tests due to Qt5.12 update.
+
+  [ Melissa LeBlanc-Williams ]
+  * Adds stripped newline to end
+
+  [ Nicholas H.Tollervey ]
+  * Fix false positives due to case sensitivity.
+  * Travis fix
+  * More Travis mess.
+  * Fix missing package needed for Qt5.12 on Linux.
+  * Argh typo
+  * More Travis config changes...
+  * Bump OSX version number to the next one supported by Apple/Travis.
+  * OSX pyenv install->upgrade.
+
+  [ Tiago Montes ]
+  * Added useless blank to force GitHub checks to run again.
+  * Removed useless blank to force GitHub checks to run again.
+  * Do not import Mu in setup.py.
+  * Call Qt's locale and setup gettext a bit later in the game.
+  * Set the LANG environment variable in AppVeyor build.
+  * Revert "Set the LANG environment variable in AppVeyor build."
+  * Revert "Call Qt's locale and setup gettext a bit later in the game."
+  * Revert "Do not import Mu in setup.py."
+  * AppVeyor diagnostic: replaced Qt's locale calls with hardcoded values.
+
+  [ Nicholas H.Tollervey ]
+  * Some fixes, tidy-ups, guards and config updates so we can use black..!
+  * Fix Python3.5 tests.
+  * Add conditional for Python 3.5 to requirements.txt.
+
+  [ Tiago Montes ]
+  * AppVeyor diagnostic: Removed unneeded PyQt5.Qt.QLocale mock.
+  * Revert "AppVeyor diagnostic: Removed unneeded PyQt5.Qt.QLocale mock."
+  * Revert "AppVeyor diagnostic: replaced Qt's locale calls with hardcoded values."
+  * Fix QLocale import, otherwise imports hang in AppVeyor.
+  * Make pycodestyle happy WRT to test line length.
+
+  [ Nicholas H.Tollervey ]
+  * Add environmental marker to setup.py for Python 3.5 / black mismatch.
+  * Update docs to highlight missing PyQt dependencies when using pip to install Mu on ARM.
+  * Fix quote related syntax error in setup.py
+  * Fix layout and tests.
+  * Fixes #774. Ensures that open tabs whose files no longer exist doesn't cause a crash when checking for duplicates.
+
+  [ Tim Golden ]
+  * Force checks to run
+  * Sort out what looks like an odd numeric comparison using "is" (Doesn't seem to be deliberate so I've switched to "==")
+
+  [ Nicholas H.Tollervey ]
+  * Fix tests checking normalisation of line endings. Apologies to @tjguk for the cock up.
+
+  [ Tiago Montes ]
+  * Do not 'import mu' in setup.py: get metadata from mu/__about__.py.
+  * Simpler setup.py install_requires: add env markers, drop nice to haves.
+
+  [ camillem ]
+  * Some typos in French Translation
+
+  [ Tiago Montes ]
+  * setup.py now works on Python 3.5: no os.PathLike support in open.
+  * Windows packaging revamp: setup.py is source of dependecy truth.
+  * Windows packaging revamp: nearly there...
+  * Windows packaging revamp: hard-code tk/turtle packages into cfg.
+  * Windows packaging revamp: remove unused imports.
+  * Windows packaging revamp: don't depend on CWD, no os.chdir().
+  * Windows packaging revamp: minor cleanups.
+  * Windows packaging revamp: 'package' extra dependencies in setup.py.
+  * Windows packaging revamp: improved code layout and docstrings.
+  * Windows packaging revamp: near final polishing.
+  * Windows packaging revamp: fix win_installer.py spawns in makefiles.
+  * Windows packaging revamp: pycodestyle now happy with make.py.
+  * macOS packaging: WIP 'package' extra dependency note in setup.py.
+  * macOS packaging: Makefile now includes a 'macos' target.
+  * Completed setup.py's extras_require, dropped requirements.txt.
+  * Updated docs on installation, developer setup, and packaging.
+  * Update Travis testing script and macOS packaging.
+  * Update AppVeyor test and package script.
+  * Make pycodestyle happy WRT __about__.py: now more complex/brittle.
+  * Windows packaging revamp: single source for publisher/author.
+  * Windows packaging: s/f-strings/.format/ to support Python 3.5.
+
+  [ Dave Ames ]
+  * Modified the tooltip for sleep() to mention the different behaviour of time.sleep()
+
+  [ Martin O'Hanlon ]
+  * enable raspbian packages install
+  * remove platform import
+
+  [ Nicholas H.Tollervey ]
+  * Fix style error.
+
+  [ Tiago Montes ]
+  * Extra margin: no breakpoint toggle if click slightly leftwards of 1st column.
+  * Fix editor test: no Mock.assert_called_once in Python 3.5.
+
+  [ Nicholas H.Tollervey ]
+  * Simplification and revision of this mode in light of discussion on the original PR.
+  * Fix problem created by change to black's API.
+  * Fix missing newlines.
+  * Ensure ESP unit tests work with Python 3.5 (no assert_called_once).
+  * Ensure output to REPL when code is run starts with a newline, allow RUN to work when REPL is active.
+  * Fix button toggle issue, annotate metadata to VID/PID specifications in ESP mode.
+  * Bump version to 1.1.0-alpha.1.
+  * Fix missing black dependencies in Windows package.
+  * More black package updates.
+  * Add logging for pip sinatllation command.
+  * Install briefcase from master in GitHub. Update setuptools/pip in Windows installer.
+  * Use standard briefcase for OSX packaging.
+
+  [ Stephen Stagg ]
+  * * Make the OSX font override warning be a logging.debug message (it's never important) * Add a print to stderr during debugger startup that prints a message to the console   pointing users to use the Stop/Continue/Step buttons to control execution flow
+
+  [ Nicholas H.Tollervey ]
+  * Add support for egg-info based packages.
+  * Ensure new button / resize measurements reflect each other.
+
+  [ Tiago Montes ]
+  * macOS packaging: use just published briefcase 0.2.9.
+  * Do not "rm mu_editor.egg-info" in cleanup: breaks -e install.
+  * macOS packaging DRY: Travis now uses "make macos".
+  * Packaging: Assume files read by setup.py are UTF-8 encoded.
+  * Packaging: Use encoding argument in open, not path.join in setup.py.
+  * Packaging: Updated Qt* dependency versions (macOS tests fail otherwise).
+  * macOS packaging DRY: don't run tests/checks twice on Travis.
+  * Fix intermittently failing macOS test.
+  * Packaging: macOS packaging process needs updated setuptools.
+
+  [ Nicholas H.Tollervey ]
+  * Update Windows installer to use customisations. See comments in package/mu_nsist.py for more information.
+  * Fix deletion of egg assets in Windows. Ensure PYTHONPATH references MODULE_DIR.
+  * Windows path fail fixed.
+  * Fix assert_called_once problem because of Python 3.5
+
+  [ Tiago Montes ]
+  * Windows packaging: Use custom pynsist script to create installer.
+  * Windows packaging: Better output spawning custom pynsist script.
+  * Windows packaging: Removed unused imports+assigns in pynsist script.
+  * Windows packaging: Simpler CI diags with pynsist script log to STDERR.
+
+  [ Leroy Levin ]
+  * allow user specify error and warning codes that pycodestyle should ignore
+
+  [ Tiago Montes ]
+  * Qt Save dialog now prevents silent overwrite of *.py files.
+  * Don't add .py extension in save logic: can lead to silent overwrite.
+  * Adding .py extension test non needed: Qt does that for us.
+  * Fix interface test: Qt's getSaveFileName now called with more args.
+  * Test that Editor.restore_session() loads tabs in the correct order.
+  * Don't change iterable order when converting paths to absolute.
+
+  [ Nicholas H.Tollervey ]
+  * Add simplegeneric to the development requirements.txt file.
+
+  [ carlosperate ]
+  * Update dev docs to use normal requirements.txt on Pi.
+
+  [ Sean Tibor ]
+  * added method to suppress auto-save error messages
+
+  [ Gustavo Reynaga ]
+  * Add Electronic Cats Boards.
+  * Add Electronic Cats Boards.
+  * Minor changes in board definition
+  * Fix Board definition
+  * fix VID and PID inverted
+  * Fix space en value Bast Board
+  * Add Value for Future Boards
+  * Delete Electronic Cats Future Board definition
+  * Fix extra TAB space in Bast Pro mini.
+  * Fix space
+
+  [ ogoletti ]
+  * typos
+
+  [ Martin Dybdal ]
+  * ESP-mode: Show current dir in files pane.
+
+  [ Nicholas H.Tollervey ]
+  * Add a 'requirements' file for ReadTheDocs.
+
+  [ carlosperate ]
+  * Add a RtD yaml config file and remove rtd_requirements.txt.
+
+  [ Nicholas H.Tollervey ]
+  * Update ROADMAP.
+  * Fix and tests for CTRL-scroll to control built-in zooming. Tested on Linux. Needs tests on OSX and Windows.
+
+  [ Tiago Montes ]
+  * Translation doc: how to run with a specific locale/language.
+
+  [ carlosperate ]
+  * Update microfs from v1.3.1 to v1.4.1.
+  * Update logger.warn() deprecated method to warning().
+
+  [ Miroslav Biňas ]
+  * slovak translation
+
+  [ Tim Golden ]
+  * Make fonts relative to current file
+  * Make sounds / images relative to current file
+  * Make music relative to current file
+  * Ignore the virtual environment
+  * Code tidy-ups
+
+  [ Nicholas H.Tollervey ]
+  * WiP
+
+  [ Martin O'Hanlon ]
+  * remove edu packages
+
+  [ Nicholas H.Tollervey ]
+  * 100% test coverage
+  * Fix comment mistake.
+  * New tabs should start with template code in them.
+
+  [ Benjamin Shockley ]
+  * Update and rename adafruit.py to circuitpython.py
+  * Added circuitpython.png to images
+  * Renamed AdafruitMode to CircuitPythonMode
+  * Renamed AdafruitMode to CircuitPythonMode
+  * Update circuitpython.py
+  * Update circuitpython.py
+  * Minor update - may be nothing.
+
+  [ Luke Slevinsky ]
+  * Remove incorrect adafruit mode docs
+
+  [ Benjamin Shockley ]
+  * Rename AdafruitMode to CircuitPythonMode
+  * Update and rename test_adafruit.py to test_circuitpython.py
+  * Added CircuitPythonMode to mode selector.
+  * Fixed Typo
+
+  [ Nicholas H.Tollervey ]
+  * Fixes in light of @tjguk's comments about opening files. Piggy backs upon existing functionality for correctly opening files in Windows.
+  * Fix Windows related os.linesep collywobbles.
+
+  [ carlosperate ]
+  * Use rtds logo in README.rst and PyPI description.
+  * Update pip install instructions with quotes for better compatibility.
+
+  [ Benjamin Shockley ]
+  * Update circuitpython.py
+  * Delete adafruit.png
+
+  [ Nicholas H.Tollervey ]
+  * Fixes in light of @carlosperate's comments and feedback.
+  * Add extra free-to-use graphical and SFX assets for PyGameZero examples.
+  * Added tests.
+  * Add test to exercise @seantibor's changes.
+  * Added fix suggested by @tmontes along with related tests.
+
+  [ Yu Wang ]
+  * update pep packages when making windows binaries.
+
+  [ Nicholas H.Tollervey ]
+  * Fix knackered CSS comment lexing in web mode.
+  * Fix clean to remove mu_editor.egg-info.
+  * Minor edits for stylistic purposes.
+  * Bump version to 1.1.0-alpha.2.
+  * A friendlier description of CircuitPython mode.
+  * Ensure web mode based static assets are included in the package.
+  * Fixes for Darwin related environment encoding problem and failure to stop web server.
+  * Add missing HTML templates used in the Flask related examples.
+
+  [ BJH ]
+  * Toggling comments should preserve embedded comments, should not change compact multi-marked comments, and selection should track actual change; includes tests
+
+  [ Tim Golden ]
+  * Fall back to the workspace directory if no file is open when an "asset" button is pressed
+  * Account for both a lack of filename and lack of tab altogether
+  * Refactor and create the assets directory if it doesn't already exist
+
+  [ BJH ]
+  * Fix selection end adjusment; more tests
+
+  [ Nicholas H.Tollervey ]
+  * Minor refactors so Web mode can benefit from these changes.
+
+  [ Yu Wang ]
+  * edited documentation to recommend upgrading local pip
+
+  [ Benjamin Shockley ]
+  * Added Mini SAM Boards
+
+  [ Tim Golden ]
+  * Produce a functionally equivalent make.py which implements the same targets as the current makefile but requires nothing beyond the stdlib
+  * PEP8 tweaks plus make sure that make.py check checks make.py!
+  * Apparently FileNotFoundError is Windows-specific. Who knew!?
+  * Nudge the use of Python 3 for the make file
+  * make.py works on Linux
+  * Add a shim to allow NSIS-installed PyQt5 to run in a venv. Pass the correct parameter when removing files
+  * Remove shim from app
+  * Make make Windows-friendly by adding a .cmd file (invokable simply as "make") Remove catch-all *args where not applicable. Where arguments *can* be passed through, give them a more meaningful name
+  * Update the README to emphasise the use of virtual environments Have the Python make file mimic the output of the Makefile version
+
+  [ Nicholas H.Tollervey ]
+  * Fix selection of Python runtime for Python runner, update broken setup.py.
+
+  [ Serge Schneider ]
+  * Update Debian packaging files
+
+  [ Nicholas H.Tollervey ]
+  * Fix Windows path related errors that interfered with the debug runner.
+  * Bump to beta 9, revised README.
+  * Beta 10. Added save as feature, updated a bunch of minor things.
+  * Fixed duplicate line in test.
+  * Python3 REPL refactor to make it an out-of-process iPython kernel.
+  * Save As is now enabled by double clicking the filename in the tab, or CTRL-SHIFT-S shortcut.
+  * Back to 100% test coverage.
+  * Refactor debugger. Ensure CWD for REPL is mu_code. Make a start on documentation.
+  * Add additional Raspberry Pi related APIs.
+  * Update to latest version of micro:bit runtime. Fix problem with RPi styles.
+  * Add a Raspberry Pi specific requirements.txt for easier installation.
+  * Doc styling and navigation sorted for developer docs.
+  * Add CHANGES to the developer docs.
+
+  [ Romilly Cocking ]
+  * Explained special developer installation prerequisites for the Raspberry Pi.
+
+  [ ladyada ]
+  * fix for https://github.com/mu-editor/mu/issues/302 - still pops up error boxes but at least doesnt quit!
+  * fix for https://github.com/mu-editor/mu/issues/281 Tested with CircuitPlayground. Microbit is unaffected
+
+  [ Nicholas H.Tollervey ]
+  * Developer documentation WiP
+  * Minor edits to comments. Back up to 100% test coverage ;-)
+  * Minor updates (python3-dev) and Makefile related corrections.C
+
+  [ ladyada ]
+  * hand checked all PIDs with circuitpy 2.1 :)
+
+  [ Nicholas H.Tollervey ]
+  * Fixed PEP8 whitespace warning.
+
+  [ ladyada ]
+  * minor typo in multiline comment
+  * very rough start, just adding button and pane
+  * plotter kinda works but needs data parsing assistance, and isnt resizing yet
+  * parsing works now, looks for data between newlines. but needs optimization around the "for i in p_list: self.series.append(*i)" line, it really slows down redraws
+  * redo resizing later
+
+  [ Nicholas H.Tollervey ]
+  * Tests pass, need to get test coverage back up to 100%
+  * Fixed problems identified by PyFakes.
+
+  [ pydo ]
+  * Add chinese
+  * 中文po对应的mo
+
+  [ Nicholas H.Tollervey ]
+  * Tests back up to 100%.
+  * Bumped version to beta.13.
+  * Added CHANGES entry for 1.0.0.beta.13 release.
+
+  [ ladyada ]
+  * add more boards
+
+  [ Anthony Sottile ]
+  * Update deadsnakes ppa name
+
+  [ pydo ]
+  * instructions of translations
+
+  [ Nicholas H.Tollervey ]
+  * Updated documentation with screenshots for translation.
+  * Fixes #316 (file load now works with .py and .PY files).
+  * Updated copyright on docs to 2018.
+  * Minor documentation refactor.
+  * Reverse regression introduced in recent changes effecting README.rst
+  * Documentation revisions to make for a simpler README.
+  * Fix README typo. Doh!
+  * Update README heading.
+  * Integrated AUTHORS into the docs.
+  * Link to Raspberry Pi.
+  * Minor revisions to the architecture documentation.
+  * Added a little more detail to the README.
+
+  [ Nicholas Tollervey ]
+  * Create ISSUE_TEMPLATE.rst for inexperienced submitters.
+
+  [ Nicholas H.Tollervey ]
+  * Fix broken link.
+  * Added a SerialLink class to handle and manage a serial link to a device.
+  * Remove serial from the MicroPythonREPL pane.
+  * Add note about potential for missing pygettext.py command (and suggest a fix.
+  * WiP
+  * If you squint, it sort-of works. ;-)
+
+  [ Serge Schneider ]
+  * debian: install desktop entry
+
+  [ Nicholas H.Tollervey ]
+  * Packaging for Windows using pynsist.
+  * Fix test suite in light of pynsist work.
+  * Integrate new app runner pane into Mu. Ensure Windows installer works on 32bit and 64bit. Comprehensive documentation update.
+  * Bump to version 1.0.0b14.
+  * Ensure GIT ignres .pytest_cache.
+
+  [ Martin O'Hanlon ]
+  * update raspberry pi setup
+
+  [ Cefn Hoile ]
+  * Make it possible to launch mu like python3 -m mu
+  * More canonical main invocation, to enable Travis CI test coverage
+
+  [ Nicholas H.Tollervey ]
+  * Various minor bug fixes.
+  * Omit __main__.py from coverage report.
+  * Add Pygame Zero mode.
+  * Remove branch from appveyor builds.
+  * Capitalisation correction.
+
+  [ Tim Golden ]
+  * Fix tiny typo
+
+  [ Nicholas H.Tollervey ]
+  * Added docs to mention running Mu with the -m flag.
+  * Fix merge from master
+  * Resizing plotter, synced with latest master.
+
+  [ ladyada ]
+  * add pirkey
+
+  [ Nicholas H.Tollervey ]
+  * Code quality cleanup
+  * Fix unit tests.
+  * It works (but everything is broken in the test suite). :-)
+  * Tests pass, TODO: 100% coverage of refactored code.
+  * 100% test coverage.
+  * Doc cleanup and fix PyQtChart dependencies for Windows.
+  * Clean up .appveyor and add PyQtCharts to setup.py.
+  * Remove plotter branch from appveyor.
+  * Add a guard around the availability of Pygame Zero when listing modes.
+
+  [ Nicholas Tollervey ]
+  * Fix tests to work on OSX
+
+  [ Nicholas H.Tollervey ]
+  * Handle address related errors when connecting to the debug runner.
+  * Add a guard for the user stopping a process runner that's not finished setting up.
+  * Update to latest versions of dependencies.
+  * Update numpy dependency in Windows installer.
+  * 1.0.0.beta.15
+  * Add non blocking flashing.
+  * Add changelog.
+  * Add guard around debug runner to ensure filename is passed as an argument.
+
+  [ Tim Golden ]
+  * Recommend that the stdlib venv be used on Windows
+
+  [ Martin O'Hanlon ]
+  * updated setup.rst
+
+  [ Nicholas H.Tollervey ]
+  * Added website related developer docs.
+  * Add section on GIF based screen captures.
+  * Added animated GIF related CSS class information.
+
+  [ pydo ]
+  * up pyzero dependency to the latest version 1.2
+
+  [ Martin O'Hanlon ]
+  * resolve issue 361
+  * added test
+
+  [ carlosperate ]
+  * CI mac: Update OS X version of Travis builds
+  * CI mac: Update installed Python version to 3.6
+  * CI mac: Update mu and build dependencies
+
+  [ Daniel Pope ]
+  * Replace Pygame Zero icon with current logo
+
+  [ Nicholas H.Tollervey ]
+  * Minor code cleanup
+  * Doc updates, appdirs dependency added, updated to latest uflash.
+  * Add updated Chinese translation. Thanks to @yonghuming for this work!
+  * Update to latest sip version.
+  * Use absolute path to locale.
+  * Ensure the y-range on the plotter axis is meaningful and sensible. Fixes #375.
+
+  [ Zander Brown ]
+  * Constancy between the three themes
+  * Indicate the mode and logs 'buttons' are clickable
+
+  [ Nicholas H.Tollervey ]
+  * Separate out session and settings configuration. Fixes #358 and gives more flexibility.
+  * Fix problem with missing tests/session.json file.
+
+  [ carlosperate ]
+  * CI Linux: Enable tests on the Linux Travis builds
+  * CI Linux: Only deploy Linux build on Python 3.6
+
+  [ Tim Golden ]
+  * Refactor to use a few manifest constants; this should help make testing easier
+  * Tidy up a slightly misleading support function
+
+  [ Zander Brown ]
+  * Allow dropping files
+
+  [ Nicholas H.Tollervey ]
+  * Enforce tests are run in a random order (and fix unwanted coupling between tests).
+  * Add 'mode' button to main button bar in Mu. Many first-time users complained that it wasn't obvious how to change mode.
+
+  [ Tim Golden ]
+  * Tests now passing for reading / writing newlines; reading encodings
+  * Complete tests for reading & writing files accounting for encodings and newlines This adds supprting code and  tests for that code but doesn't touch the existing Mu implementation
+  * Remove some mostly-unrelated changes to reduce the change of a merge conflict
+  * Shift the i18n support up to the package level which has the effect of making mu.logic able to be imported independently
+  * gettext no longer needed in conftest as it's imported at the package level
+
+  [ Nicholas H.Tollervey ]
+  * Ensure tkinter is included as a dependency in the Windows build. Update to include all the requested packages from RPi Foundation.
+  * Remove branch for building by appveyor.
+  * Doc related updates concerning tkinter etc packages.
+
+  [ Tim Golden ]
+  * Bring the existing make.py commands in line with their Makefile equivalents
+
+  [ Nicholas H.Tollervey ]
+  * Add missing dependencies for requests to Windows packaging configuration.
+  * Mention how to create shortcuts.
+
+  [ Tim Golden ]
+  * Start to add support for translate/translateall
+  * Add some missing commands Cut back on the output which tends to hide where the problems are And... run make.py on make.py and fix up the resulting warnings!
+
+  [ Nicholas H.Tollervey ]
+  * Appease the god of PEP8.
+
+  [ Tim Golden ]
+  * Add support for the translate command
+
+  [ Nicholas H.Tollervey ]
+  * Fix typo.
+  * Use make to build Windows installers with Appveyor.
+
+  [ Tim Golden ]
+  * Standard checks now passing
+
+  [ Nicholas H.Tollervey ]
+  * Final test in Appveyor build uses make check.
+
+  [ Tim Golden ]
+  * Merge the logic file read/write tests back into test_logic.py at @ntoll requests.
+  * Housekeeping
+  * Start to refactor session load/save tests. These tests are somewhat brittle, relying on mocking the builtin open and then assuming a pattern of usage which is confounded by the new load_and_decode/save_and_encode work to manage encodings and line-endings.
+
+  [ carlosperate ]
+  * Change unicode arrow included in the check markers text
+
+  [ Tim Golden ]
+  * Refactor a sample test even further, pushing the logic into the support module which patches get_session_filename
+  * Have the various subcommands return their process exit code. This will then cascade up to the original sys.exit and can form the basis for a pass/fail from outer processes (eg CI)
+  * Refactor test_editor_restore_session_invalid_mode
+  * Slightly tweak some of the testing support functions
+  * Merge the test-support code into test_logic to try to keep to the preferred one-testing-file approach
+  * Get all tests passing after implementing the new save/load-with-encoding functionality
+  * Minor issues from running make check
+  * Fix a couple of pieces of unreachable code
+
+  [ Nicholas H.Tollervey ]
+  * Updated MicroPython runtime for micro:bit.
+  * Use 'mu-editor' instead of 'mu' as the command to launch mu.
+
+  [ Tim Golden ]
+  * Simplify the common case of generating a single (possibly empty) Python file
+  * Add tests for load/save preserving newlines
+  * PEP8 fix
+  * Add design notes around the encoding / newline changes
+  * The bare .assert_with was only introduced in 3.6 and we need to be 3.5-compatible.
+
+  [ Nicholas H.Tollervey ]
+  * Log the absence of QCharts.
+  * Fix bug in the way files, repl and plotter buttons interact when enabling/disabling.
+  * Final tidy-ups
+  * Fix test that could read from real session file by accident.
+  * Ensure filetypes are case insensitive, and unknown filetypes are reported.
+  * Update to latest uflash.
+
+  [ Zander Brown ]
+  * Revert "Indicate the mode and logs 'buttons' are clickable"
+
+  [ Nicholas H.Tollervey ]
+  * Add nudatus to contrib for later minification work.
+  * Fix tab closing bug #304.
+  * Add docs about USB/serial permissions and drivers to developer setup.
+  * Fix verbose logging on device discovery.
+
+  [ Zander Brown ]
+  * Write some tests for file dropping
+
+  [ Nicholas H.Tollervey ]
+  * UI/CSS changes to make the tabs more tab-y and the contrast in dark theme better.
+  * Minor tidy-ups to appease the 'make check' gods.
+  * Refactor to turn the logs dialog into a very simple admin dialog so users can specify things like custom environment variables.
+  * Add envar support to debug runner.
+  * Make font colour for day theme tabs default to black.
+  * Ensure REPL has user defined environment variables available to it.
+
+  [ Tim Golden ]
+  * Do just enough to get tests passing with no encoding
+  * All tests pass after removing code to insert an encoding cookie
+  * All tests pass no we're no longer writing our own encoding cookie
+  * Make the error message which pops up on a decoding failure actually spell out which encodings were attempted
+  * Revert "Do just enough to get tests passing with no encoding"
+
+  [ Nicholas H.Tollervey ]
+  * Allow mode selection to respond to double-clicks. Fixes #410.
+  * Normalise passed in filename to absolute path.
+  * Use OS specific absolute paths in session file.
+
+  [ Tim Golden ]
+  * Update the file-loading design note to reflect the newer thinking on encoding cookies
+  * Ensure that non-western text can be logged
+
+  [ Zander Brown ]
+  * Take a little more care opening files from arguments
+  * Add a cli open test
+  * Use samefile rather than string comparision to check already open files
+  * Fix a regression and improve logging
+
+  [ Nicholas H.Tollervey ]
+  * Fix breakage with passed file.
+
+  [ Tim Golden ]
+  * Open logging for output as utf-8; this enabled non-Western editor contents to be written to log under western Windows (where the default is, eg, cp1252)
+  * Now with passing tests!
+
+  [ Zander Brown ]
+  * Logic belongs in logic. move it there
+  * Further refactoring
+
+  [ Tim Golden ]
+  * Refactor to remove encoding cookie
+
+  [ Zander Brown ]
+  * Style context menus
+  * Set some QApplication properties
+  * Create a minimal appdata.xml
+
+  [ Nicholas H.Tollervey ]
+  * Add some contrast to the border in night mode.
+  * Fix breaking test.
+  * PEP8
+
+  [ Zander Brown ]
+  * Renaming files according to proposed appid
+
+  [ Nicholas H.Tollervey ]
+  * Add comments, minor refactor (to simplify) and add more tests for sake of robustness.
+  * Add plotter button to Python 3.
+  * Fix plotter related problems in #415.
+  * Fix for #416.
+
+  [ Tim Golden ]
+  * Make sure that test failure modes happen correctly on Windows
+
+  [ Carol Willing ]
+  * Alphabetize requirements
+  * edit style for readability and maintainability
+  * update test for simplified error message
+
+  [ Frank Morton ]
+  * add addfruit "mount" location search support
+  * add addfruit "mount" location search support
+  * add addfruit "mount" location search support
+
+  [ Zander Brown ]
+  * Close button icons
+  * Set the close icons
+  * Little more contrast on the close icon
+
+  [ Tim Golden ]
+  * Detect an invalid codec in an encoding cookie
+  * Trap an inability to encode all characters in the text
+  * Add a test for the log-and-fallback logic when an invalid codec is specified in the encoding cookie
+
+  [ Nicholas H.Tollervey ]
+  * Style updates
+  * Remove year from splash screen.
+  * Add test for /sbin/mount.
+
+  [ Zander Brown ]
+  * Alter the close icon to be more central
+
+  [ Tim Golden ]
+  * Add a test for a file which cannot be saved for reasons of encoding
+  * Small fixups arising from testing
+  * Ensure that make check moves down below the topmost folder!
+  * Appease the codestyle / pyflakes gods
+
+  [ INACHI Minoru ]
+  * Add japanese translate file.
+
+  [ Tim Golden ]
+  * Add the newer PR
+
+  [ carlosperate ]
+  * CI Windows: Clean up AppVeyor file
+
+  [ Nicholas H.Tollervey ]
+  * WiP
+  * Fixes #431 by handling OSError, logging the exception and add some context as a comment.
+  * Add more (specific) unit tests and fix docstring.
+  * Refactor to use logger.exception.
+  * Test coverage up to 100%
+  * Simple (but effective) measures to avoid flooding the plotter with data thus causing Mu to become unresponsive.
+  * Added tests.
+  * Appease the PEP8 gods...
+  * Update README and setup so trove categories are correct and logo works with PyPI.
+  * Fix #432.
+  * Fix OSX install scripts for Travis.
+
+  [ carlosperate ]
+  * Update setup.py to be able to install from source on Raspberry Pi
+
+  [ Nicholas H.Tollervey ]
+  * Add micro:bit admin tab to allow for minification and custom runtime configuration.
+
+  [ Zander Brown ]
+  * Inital play with button styling
+  * Fix tests
+
+  [ Nicholas H.Tollervey ]
+  * Documentation update.
+
+  [ Zander Brown ]
+  * Set modal dialogs parent
+  * Further work styling dialog buttons
+
+  [ Nicholas H.Tollervey ]
+  * Add reference to https://madewith.mu/.
+  * Appease the LGTM alert gods.
+  * Set start_of_current_line on newline (and associated test adjustment). Fixes #442
+  * Disable CTRL-C and CTRL-D in PythonProcessPane when the child process is finished.
+  * Enforce UTF-8 on loading of log files. Fixes potential breakage in Windows.
+  * Fix missing *args in _append_plain_text. Fixes #444.
+  * Add correct handling of delete/backspace to Python runner pane (and tests). Fixes #225 for Python 3 mode.
+
+  [ Carlos ]
+  * Update requirements_pi to includ missing dependencies
+
+  [ Zander Brown ]
+  * Preselect the current mode
+  * Give text areas in admin dialog a border
+  * Rearange minify logic
+  * Updates tests
+  * PEP8 again
+  * Catch tokenerrors
+  * Test everything!
+  * Missed some whitespace
+
+  [ microbit-carlos ]
+  * If a new device is connected ask the user if they want to change mode
+  * Fix assertions in older Python versions
+
+  [ Nicholas H.Tollervey ]
+  * Add Mu related swag assets.
+  * Update description to match the one in the README.
+  * Fix debian related gremlin.
+  * Modify message slightly to remove redundant text. Ensure removed devices are tracked.
+
+  [ carlosperate ]
+  * Fix missing asserts on test_logic.py
+
+  [ Nicholas H.Tollervey ]
+  * Top sekret t-shirt designs for people who have contributed.
+  * Update Makefile output to mention win32/win64 build commands.
+
+  [ Zander Brown ]
+  * Don't try to size menus
+
+  [ Nicholas H.Tollervey ]
+  * Fix for #454 so interaction with the micro:bit file system is much more robust.
+  * Fixes the dangling filesystem panes when changing modes mentioned in #460.
+  * Fix dangling plotter pane when changing modes.
+
+  [ carlosperate ]
+  * Let microfs manage its serial connection and other serial updates
+
+  [ Nicholas H.Tollervey ]
+  * Fix crash when trying to close a non-existent serial link after closing the iPython REPL.
+  * Add asset buttons for music and fonts to PyGameZero mode.
+
+  [ ladyada ]
+  * add crickit
+  * add some upcoming boards
+
+  [ Nicholas H.Tollervey ]
+  * Remove trailing whitespace to appease the PEP8 gods.
+
+  [ carlosperate ]
+  * Check for exceptions when trying to check the locale
+
+  [ Nicholas H.Tollervey ]
+  * Fix annoying popup windows and broken locale detection in help button.
+  * Quicker splash screen.
+  * Fix stye fail.
+  * Update Adafruit mode to rename REPL -> Serial (at request of Adafruit).
+
+  [ microbit-carlos ]
+  * Add option for the Mu modes to attempt to open a file
+  * Allow modes to expand the file extensions available to open
+  * Add tests for Mu modes attempting to open a file
+
+  [ Nicholas H.Tollervey ]
+  * First attempt at automating the build of an installable via dmg image.
+  * Appease the PEP8 and Flake8 gods.
+  * Try building again with a virtualenv to avoid brew/pip related fubar.
+  * Doh, install virtualenv.
+  * Fix Makefile to ignore venv.
+  * Ignore venv for PyFlakes.
+  * Another attempt to fix the DistUtilsOptionError.
+  * User --user with pip3
+  * *sigh* Go home Travis, you're drunk. :-/
+  * More pip configuration.
+  * Use simplified Python setup.
+  * Travis bleh
+  * Travis 1, me 0
+  * Venv
+  * Ugh... -p option for mkdir
+  * Only upload for OSX
+  * Try with virtualenv only.
+  * Make upload only for OSX
+  * Add flag for deployment.
+  * Add flag for deployment.
+  * Only deploy on OSX.
+
+  [ Tim Golden ]
+  * Ensure embedded process is run with UTF-8 encoding on stdout/err
+
+  [ Nicholas H.Tollervey ]
+  * Update dev docs to correct usage of Mode button.
+  * Remove capitalization of annotated messages which may create confusing output for the user. Fixes #474.
+  * Appease the PyFlake gods.
+  * update to 1.2.4 of microfs (fixes bug with GET operation).
+  * Update tests in light of #471.
+
+  [ carlosperate ]
+  * Minor nitpickings: Deprecated method, remove temp import workaround
+
+  [ Nicholas H.Tollervey ]
+  * Fix MicroPython based DELETE key handling in the REPL. FINALLY fixes #225
+  * Simplify the README.
+  * Fix non-ascii character problem with the PythonProcessPane. Fixes #475.
+  * Use custom version of Python 3.
+
+  [ Gérald Quintana ]
+  * Add french translation
+  * Bug fix french translation
+
+  [ Nicholas H.Tollervey ]
+  * Use latest uflash.
+  * Use lastest version of uflash.
+
+  [ Stephen Stagg ]
+  * As per https://github.com/jacobslusser/ScintillaNET/issues/279, scintilla is quite sensitive to when the margin colors are set.  By moving the call to setMarginsBackgroundColor() after setLexer(), changing the theme now updates the margin background and foreground colours
+  * Make toolbar icons crisp on OSX / HiDPI dispkays
+  * Fix mock call count in tests
+
+  [ Nicholas H.Tollervey ]
+  * Change the way the debugger is launched so it doesn't rely on an 'installed' script.
+  * Final cleanups for testing.
+  * s/path/filename :-/
+  * More typo correction.
+  * Use absolute path.
+  * Newline...
+  * More updates... TODO: fix tests.
+  * Fixed tests. Check automated build on Travis.
+  * Change how PGZero is launched. TODO: Add tests.
+  * Add working tests.
+  * Update Makefile to delete assets created when packaging on OSX.
+
+  [ Zander Brown ]
+  * Translateable untitled
+
+  [ Nicholas H.Tollervey ]
+  * Initial work and tests for debug related problems.
+  * Build for OSX
+  * Add guard to removal of breakpoint while debugger is running.
+  * Update to latest build of stand-alone Python for OSX.
+  * Fix Windows path related issues with the debugger.
+  * Correctly handle tabs with no paths set yet.
+  * Fix OSX build to use new path.
+  * Bump embedded Python version in OSX.
+  * Bump OSX portable Python to 0.0.5
+  * Fix broken test and rely on __file__ as source for Mu directory.
+  * Directly reference app rather than via the mu namespace.
+  * Add version information for developer setup on Raspberry Pi.
+  * Revert problem introduced by relative path in mu-debug.
+  * Remove un-needed branch reference from Travis build definition.
+  * Fixes #345. Fixes #491. Update debugger behaviour when handling breakpoints and breakpoint markers.
+  * Fixes #486. Ensure it's not possible to transition to a new mode when the game is running.
+  * Fixes #450. Ensure newlines pasted into MicroPython REPL appear as \r no matter the platform running Mu.
+
+  [ carlosperate ]
+  * makep.py: Check for return codes
+
+  [ Nicholas H.Tollervey ]
+  * Fixes #160. Ensure the first line with problems is always shown when checker is run.
+  * Add details of OSX packaging and update Linux related packaging information.
+  * Fixes #493. Ensure markers are only added if the current tab's path is the same as the filename associated with the newly created breakpoint.
+  * Fixes #494. Ensure removal of line highlighting happens before we know the state of the next highlighted line.
+  * Ensure set_trace is only called on script start in the absence of any breakpoints.
+  * Add YouTube videos to developer docs.
+  * Update CHANGES to reflect beta.16 release.
+  * Bump version to beta.16.
+
+  [ Zander Brown ]
+  * Context menu for local file listing
+  * Testing this is tricky
+  * Test the actual menu
+  * Back to 100% tests
+  * Style update
+  * Make Admin & Mode Dialogs properly modal
+
+  [ Gérald Quintana ]
+  * Update translation for 1.0b16
+
+  [ Nicholas H.Tollervey ]
+  * Add find/replace functionality triggered by Ctrl-F.
+  * Shelving new-flash
+  * Add system-wide installation information for Windows.
+  * Shelve
+  * Add dependencies for Matplotlib in OSX
+  * Shelve
+  * Use pyenv to install Python 3.6.5.
+  * More brew related fixes.
+  * try to specify Python 3.6 in travis for OSX
+  * Drop brew.
+  * Check Python version
+  * Re-add brew, alias python3 and hope the damn thing works
+  * Brew install Python 3.6 from GitHub raw URL.
+  * Implement new (faster) flash functionality.
+  * Handle hex files to be saved onto the local filesystem.
+  * Handle case where user provides a path on the local file system.
+  * Add Ctrl-K as toggle comments on selected text. Fixes #516.
+
+  [ Zander Brown ]
+  * QFileDialog should have the window as it's parent
+  * Update night & contrast for changes in day
+
+  [ Nicholas H.Tollervey ]
+  * Improve and refactor comment toggling with Ctrl-K.
+  * On file save, check for shadow modules. Fixes # 363.
+  * Udate package to PyQt5.11 and other latest releases.
+  * Update osx_image to use OSX 10.11 (PyQt no longer supports version lower than this).
+
+  [ Zander Brown ]
+  * Simplify & fix tests
+
+  [ Nicholas H.Tollervey ]
+  * Ensure the old mode is reset as expected upon change of mode. Fixes #526.
+
+  [ Zander Brown ]
+  * 🤦 Actually fix the test
+
+  [ Nicholas H.Tollervey ]
+  * Try different way to update Python to 3.6 on OSX in Travis.
+  * Try pyenv for specifying use of Python 3.6.5
+  * Try again with travis and 3.6/
+  * List installed version via pyenv.
+
+  [ Zander Brown ]
+  * Style scrollbars
+
+  [ Nicholas H.Tollervey ]
+  * Force eval of pyenv init.
+  * Don't use a virtualenv in OSX.
+  * Try a different compression.
+  * Zip up .app to get around dmgbuild errors.
+  * Fix pep8... Ugh.
+  * Recursive zip of app directory.
+
+  [ Zander Brown ]
+  * Apply theme application wide
+  * We don't need to pass the theme around all the time
+  * Fix tests
+
+  [ Nicholas H.Tollervey ]
+  * Revert compression algorithm in dmg.
+  * Fixed #532. The set_trace method didn't correctly set the frame. The set_step method does the right thing in the context of the script to be debugged.
+  * Fix for #531. The handling of user created exceptions was actually never handled.
+  * Comment fix for exception handling in the debugger.
+  * Fix merge-related munging of tests.
+  * There should be a single source of truth for a Python script's max length: uflash.
+  * Add missing normcase.
+  * Ensure tests are OS file path agnostic.
+  * Make LC_ALL based test unix only.
+  * Update new flash functionality in prep for merging to master.
+  * comment update for tests.
+  * If Python script is empty, force flash of empty MicroPython runtime.
+  * Add license agreement to MacOS DMG.
+  * Stylistic cleanup of dmg_settings.py to appease the PEP8 gods.
+  * Validate version of MicroPython is semantic.
+  * Stop change-mode autodetection dialog from appearing if the user is already changing mode via the usual dialog.
+
+  [ Zander Brown ]
+  * Regain full test coverage
+
+  [ Nicholas H.Tollervey ]
+  * Bump version to 1.0.0.beta.17
+  * Update CHANGES for upcoming beta 17 release.
+
+  [ Zander Brown ]
+  * Style fixes
+
+  [ Gérald Quintana ]
+  * Updated translations for 1.0b17
+
+  [ Nicholas H.Tollervey ]
+  * Allez France!
+  * Explicit exception handling in utiity scripts for generating API documentation.
+  * Added release checklist/process information to the documentation.
+
+  [ carlosperate ]
+  * Add spanish translations
+  * Add spanish translation .mo file
+
+  [ Nicholas H.Tollervey ]
+  * Allow autogenerated .mo translation files in the Git repository.
+
+  [ Zander Brown ]
+  * Fix #541
+
+  [ INACHI Minoru ]
+  * Update Japanese translation for 1.0b17.
+
+  [ Nicholas H.Tollervey ]
+  * Update new flash to account for unknown micro:bit based devices.
+  * Fix debugger line highlighting off by one error (ObOE).
+  * Make user accessible string ready for i18n.
+
+  [ Zander Brown ]
+  * Bring consistancy to macOS tabs
+
+  [ INACHI Minoru ]
+  * Update Japanese translation for latest 1.0 candidate.
+
+  [ Nicholas H.Tollervey ]
+  * Fixes #549. If no serial connection to the micro:bit is available, revert to the old style flashing of the hex file with code appended to the end.
+
+  [ carlosperate ]
+  * Update spanish translations from PR comments
+  * Update spanish translation with latest strings
+  * Review and remove fuzziness from Spanish translations
+
+  [ Nicholas H.Tollervey ]
+  * Fixes #550. Use Qt's serial classes to get the device's serial number.
+  * Fixes #554. Modes specify module names to check for filename shadowing.
+
+  [ Tiago Montes ]
+  * Portugal's Portuguese (pt_PT) UI translation.
+  * Shorter debug stepping control button labels.
+
+  [ Zander Brown ]
+  * Debug items shouldn't be editable
+  * Style DockWidgets, cleanup TreeView a little
+
+  [ Nicholas H.Tollervey ]
+  * Fixes #558. If copying the main file fails because of IOError (serial), recert to old style flashing.
+
+  [ Zander Brown ]
+  * Fix blue bars
+
+  [ Nicholas H.Tollervey ]
+  * Update source location of i18n settings override.
+  * Revise LOC count in docs.
+  * Fix regression that stopped suggestion of mode when new device was plugged in.
+  * Release Candidate 1.
+  * Release Candidate 1 (now with added MicroPython).
+
+  [ Stephen Stagg ]
+  * Workaround for #552: Fix black text issue with qtscintilla
+  * Remove erroneous ~ from comment
+  * Fix tests by removing whitespace
+
+  [ Nicholas H.Tollervey ]
+  * Fix some hot-key related mistakes / duplications.
+
+  [ Tim Golden ]
+  * Invoke the standard save-and-encode logic to make sure we cope with non-ASCII unicode when running checks
+  * Add test to ensure that pycodestyle at least gets to see code which contains non-ASCII unicode characters (in this case a non-U+0020 space)
+  * Appease the PEP8 gods!
+
+  [ Nicholas H.Tollervey ]
+  * Code coverage pragma.
+  * Update API docs.
+  * Mitigate minor modal madness.
+  * Update to latest uflash.
+  * Add Actor class. TODO: Fix up autogenerated PyGame Zero API docs.
+  * Bump to version 1.0. Hurrah..!
+  * Fix names in Appveyor (doh).
+
+  [ reneraab ]
+  * Add German translation for Mu
+
+  [ Limor "Ladyada" Fried ]
+  * Add new Adafruit board
+
+  [ carlosperate ]
+  * Add to the log the detected language code
+  * Edit checks for OSX app bundles to be independent of app name
+
+  [ Douglas Temple ]
+  * File dialog boxes remember previous folder used
+
+  [ Tresonic ]
+  * Improved German translation
+
+  [ doanminhdang ]
+  * Add translation into Vietnamese
+
+  [ Martin Dybdal ]
+  * Make MicroPython REPL process_bytes disregard color escape sequences instead of crashing the editor
+
+  [ René Dudfield ]
+  * Error message in the setup.py for when python version is too old.
+
+  [ Marco A L Barbosa ]
+  * Copy pt_PT translation to pt_BR
+  * Update pt_BR translations (based on pt_PT)
+  * Use complete language_code instead of only 2 characters
+
+  [ ohiofi ]
+  * Added some Pygame Zero API docs
+
+  [ Zander Brown ]
+  * Move the cursor to the end of the initial content
+  * Quick workaround
+
+  [ Nick Morrott ]
+  * Update mu binary filename in XDG Desktop Entry
+  * Remove trailing whitespace in XDG Desktop Entry
+
+  [ Filip Korling ]
+  * Swedish translation
+
+  [ Nick Morrott ]
+  * Update StartupWMClass value in desktop file
+  * Address issues raised with appstreamcli validation
+
+  [ Carlos ]
+  * Add nudatus to setup.py
+
+  [ Nick Morrott ]
+  * Use standard <developer_name/> tag in appdata
+
+  [ JohnGuan ]
+  * Complete Chinese translation.
+
+  [ Nicholas H.Tollervey ]
+  * Add video creation from Git commits.
+  * Add/update roadmap (Mappa MUndi).
+
+  [ dfarning ]
+  * replaced deprecated logger.warn method with logger.warning
+
+  [ Nicholas H.Tollervey ]
+  * Fix for #602, where the UI becomes unresponsive due to IO flooding from a running sub-process.
+
+  [ Adam Jurkiewicz ]
+  * Polish translation
+
+  [ Nicholas H.Tollervey ]
+  * Update to latest version of MicroPython for micro:bit.
+
+  [ Filip Kłębczyk ]
+  * Polish translation of Mu
+
+  [ Timothy McCurrach ]
+  * Made day theme off-white with dark-grey
+  * Update tests to reflect changes in Font class defaults
+  * Update PythonProcessPane.parse_input to deal with newlines whilst the cursor is midline
+
+  [ Zander Brown ]
+  * Toolbar styles for #633
+
+  [ Adam Jurkiewicz ]
+  * Finished polish translation
+
+  [ Nicholas H.Tollervey ]
+  * Remove unused translation assets.
+  * Add quickstart to developer docs. A per feedback from the London Python sprint night.
+
+  [ Timothy McCurrach ]
+  * Reimplement JupyterREPL.set_font_size and update tests
+
+  [ Nicholas H.Tollervey ]
+  * Add tests for previous_folder attribute updates.
+  * Ensured Python 3.6 until PyQt fix their bug in the build for Python 3.5.
+  * Added test for empty language code.
+  * Update for 1.0.1 changelog.
+  * Update to uflash 1.2.3 (includes MicroPython 1.0.0 FINAL).
+  * Bump the version numbers to 1.0.1 pending final checks.
+  * Freeze to working version of briefcase so OSX app is created correctly.
+  * Revert to known working briefcase version to fix OSX build problems.
+  * Update to work with latest briefcase version for OSX builds.
+
+  [ Craig Steele ]
+  * Updating OSX to macOS in README
+
+  [ JohnGuan ]
+  * Improved Chinese translation.
+
+  [ Tiago Montes ]
+  * New language detection module, with macOS specific fallback detection.
+  * Refactored existing code to use common language detection code.
+  * Updated setup.py to include platform specific install requirements.
+  * Make pycodestyle happy wrt "E303 too many blank lines".
+  * Make LGTM happy about the unused, _prefixed, local variable.
+  * Ensure that macOS detected language code is a indeed a string.
+  * Refactored localedetect module, increasing testability.
+  * Make pyflakes happy wrt to an unused import.
+  * Progress on testing localedetect.language_code.
+  * Progress on testing platform specific localedetect.language_code.
+  * Minor corrections to previous commits on tests.
+  * Test for macOS platform specific language detection code.
+
+  [ Martin Dybdal ]
+  * Started work on an ESP8266/ESP32-mode, using AMPY (github.com/adafruit/ampy) for datatransfers
+  * Fixes necessary after pulling changes from mu/master
+  * Enable 'flash' button when closing 'files' pane
+  * Add thread lock on serial communication
+  * A bit of error handling when using pyboard.py
+  * Remove debug print of Python script while flashing
+  * ESP32 MicroPython API documentation (the essentials, not complete)
+  * Rename to ESP-Mode
+  * Abort if flashing does not complete within 15 seconds.
+  * Remove unnecessary import, add PyboardError import
+  * mu/modes/esp.py: Release lock if loading REPL failed.
+  * Fix issues with Pyboard not being able to interrupt programs before flashing
+  * Test suite for ESP-mode
+  * Fix long line.
+  * mu/contrib: Fix LGTM-warnings in files.py and pyboard.py
+
+  [ Tiago Montes ]
+  * Better platform specific install requires on setup.py.
+  * Make pycodestyle happy with test code.
+  * Moved localedetect module tests to their own module.
+  * Test that failures during locale detection result in 'en_GB'.
+  * Minor comment and name reviews in the localedetect tests.
+  * No longer need locale detection failure tests on test_init.py.
+  * Ask Travis to install Mu first.
+
+  [ Tim Golden ]
+  * Strip trailing spaces before any newline -- with tests
+  * Fix up PEP8 issues
+
+  [ carlosperate ]
+  * Update PyQt5 versions to restore Py3.5 compatibility
+  * Add environmental markers to setup.py to exclude unavailable packages in ARM
+  * Add environment markers to requirements.txt
+  * Add qtconsole to Raspberry Pi dependencies
+
+  [ wu6692776 ]
+  * Update main.py
+
+  [ Łukasz Langa ]
+  * Make pretty
+  * Add E203 to ignore, simplify Black call
+  * Make flake8 happy, add Black to dependencies
+  * Make Flake8 *even more* happy
+  * Tests should probably be happy, too.
+
+  [ Juan Biondi ]
+  * Fix typos to be singular-first person written.
+
+  [ Moritzheine ]
+  * Calliope mini mode for mu-editor
+
+  [ Moritz ]
+  * Update mu/logic.py
+
+  [ Moritzheine ]
+  * Calliope mini mode
+
+  [ Moritz ]
+  * calliope mini runtime changes
+  * Update mu/logic.py
+
+  [ Moritzheine ]
+  * Update logic.py
+
+  [ Moritz ]
+  * Style cleaning
+
+  [ Moritzheine ]
+  * Update .gitignore
+
+  [ Moritz ]
+  * Python stlye patch
+  * style patch
+  * style patch
+  * Update mu/logic.py
+  * Update mu/logic.py
+  * Update mu/interface/panes.py
+
+  [ Carlos Pereira Atencio ]
+  * Update mu/locale/es/LC_MESSAGES/mu.po
+
+  [ Juan Biondi ]
+  * Update mu.po
+
+  [ Moritz ]
+  * Update mu/logic.py
+  * Update mu/logic.py
+  * Update mu/logic.py
+  * Update mu/logic.py
+
+  [ JohnGuan ]
+  * Improved Chinese translation.
+
+  [ Moritz ]
+  * Fixes
+  * Update dialogs.py
+  * Fixes
+  * Update logic.py
+  * test files adaptation
+  * Fixes
+
+  [ wayoda ]
+  * Fix typos for locale de_DE
+
+  [ Tim Golden ]
+  * Bookmark what we're working on
+  * Python 3 & Debugger modes now hand off to the editor save_tab_to_file functionality
+  * PygameZero mode now hands off to the editor save_tab_to_file functionality
+  * Fix up "make check" grumbles
+  * Remove debugging probes Remove an unneeded set-modified
+  * Undo a change made as part of a previous approach
+
+  [ Moritz ]
+  * Runtime update
+
+  [ Tim Golden ]
+  * cf Issue #715
+
+  [ ladyada ]
+  * add generic vendor id to catch all adafruit boards
+  * add some more future PIDs
+  * try to fix some lints
+  * merry lintmas
+
+  [ Nicholas H.Tollervey ]
+  * Ensure, if there were bytes in the buffer for reading, keep reading until none are left.
+  * Schedule ASAP.
+  * Fix tests
+  * Fixes for splits in multi-byte characters (and associated tests).
+  * Add specific test for set_start_of_current_line.
+  * Add updated mu.mo for Spanish translation.
+  * Thanks to @tim-mccurrach for guard against too many QTimers for reading stdout.
+  * Update to the latest version of MicroPython/uflash for micro:bit.
+  * Fixes #701.
+
+  [ Tiago Montes ]
+  * Much simplified platform dependent language detection code.
+  * Cleanup the previously required rubicon dependency.
+  * Simpler tests for language detection code.
+  * Minor whitespace fixes to make pycodestyle happy.
+  * Removed test_gettext_translation and, thus, test_init.py.
+
+  [ Nicholas H.Tollervey ]
+  * Improved zoom. Fixes #640 #614 #553.
+  * Fixes #711. Ensure no mode change prompt if current mode is running code.
+  * Ensure it's not possible to append None to bytes.
+  * Bump version number.
+  * Ensure correct paths in Windows for sub-processes launched by Mu + fix minor zoom bug.
+  * Fix and test for creating USER_SITE if it doesn't already exist. Thanks to Tim for the pointers.
+
+  [ Nick Morrott ]
+  * Restore test randomisation
+
+  [ brentru ]
+  * adding particle argon to adafruit circuitpython mode
+  * adding xenon and boron to valid board list
+
+  [ Nicholas H.Tollervey ]
+  * File dialog will remember path last used. Fixes #480.
+  * Appease the TRAVIS gods (to the lowest currently supported version of XCode).
+  * More OSX related Travis configuration.
+  * *sigh* Yet more Travis faffing about for OSX.
+  * Travis de-faffing
+
+  [ Tiago Montes ]
+  * Fix selection match highlights with non-ASCII editor contents.
+
+  [ doanminhdang ]
+  * update license of Vietnamese translation to GPL v3
+
+  [ Nicholas H.Tollervey ]
+  * Remove un-needed print statement which *could* cause encoding issues.
+  * Fixes #743, a guard against encoding problems with the print statement.
+
+  [ ShawnHymel ]
+  * Updated test_client.py to check for equality on bp.ignore and added support for SparkFun SAMD21 Dev and Mini Breakout boards
+  * Removed unused white space between VID/PID sections
+
+  [ Tiago Montes ]
+  * Mu window can now be as small as 1/2 screen width/height.
+  * Window position and size now saved/restored on quit/relaunch.
+
+  [ Nicholas H.Tollervey ]
+  * First draft and tests for simple support for third party packages.
+  * Ensure a reference to self.process
+  * Fix layout issues.
+  * Allow REPL access to third party modules installed via Mu.
+  * Add PyPI clarification to UI instructions.
+  * Deal with different case module name / module directory and ensure all directories that don't contain any files are removed.
+  * Fix PYTHONPATH generation from sys.path to use os.pathsep.
+  * Remove no-longer-needed Darwin specific PYTHONPATH munging.
+  * Fix to make correctly normalised package names for use with filesystem.
+  * Packaging is disabled on Raspberry Pi.
+
+  [ Tiago Montes ]
+  * Highlight matched selections with non-ASCII word characters.
+  * Test for match selection highlight with non-ASCII editor contents.
+  * Test for match selection highlight with non-ASCII selection.
+  * Refactored matched selection highlights tests.
+  * Single, parametrized, matched selection highlights test.
+  * Much simpler locale detection, now relying on Qt's QLocale.
+
+  [ Tim Golden ]
+  * Have Python3 mode run in the code file's directory
+  * Have various modes run in the same directory as the code file
+  * Update existing tests
+  * Appease the line-length gods
+
+  [ Tiago Montes ]
+  * Test that Mu's window min size is set to 1/2 the screen width/height.
+  * Test that Mu's window is not sized on setup.
+  * Fix quit tests and ensure that window geometry is saved on quit.
+  * Test that window geometry is restored if saved in the session.
+  * Test that window geometry is set to default if not saved in the session.
+
+  [ Nicholas H.Tollervey ]
+  * Fix message in 3rd party tab for RPi users. Fix unicode problem from METADATA.
+  * Fix failing tests due to Qt5.12 update.
+
+  [ Melissa LeBlanc-Williams ]
+  * Adds stripped newline to end
+
+  [ Nicholas H.Tollervey ]
+  * Fix false positives due to case sensitivity.
+  * Travis fix
+  * More Travis mess.
+  * Fix missing package needed for Qt5.12 on Linux.
+  * Argh typo
+  * More Travis config changes...
+  * Bump OSX version number to the next one supported by Apple/Travis.
+  * OSX pyenv install->upgrade.
+
+  [ Tiago Montes ]
+  * Added useless blank to force GitHub checks to run again.
+  * Removed useless blank to force GitHub checks to run again.
+  * Do not import Mu in setup.py.
+  * Call Qt's locale and setup gettext a bit later in the game.
+  * Set the LANG environment variable in AppVeyor build.
+  * Revert "Set the LANG environment variable in AppVeyor build."
+  * Revert "Call Qt's locale and setup gettext a bit later in the game."
+  * Revert "Do not import Mu in setup.py."
+  * AppVeyor diagnostic: replaced Qt's locale calls with hardcoded values.
+
+  [ Nicholas H.Tollervey ]
+  * Some fixes, tidy-ups, guards and config updates so we can use black..!
+  * Fix Python3.5 tests.
+  * Add conditional for Python 3.5 to requirements.txt.
+
+  [ Tiago Montes ]
+  * AppVeyor diagnostic: Removed unneeded PyQt5.Qt.QLocale mock.
+  * Revert "AppVeyor diagnostic: Removed unneeded PyQt5.Qt.QLocale mock."
+  * Revert "AppVeyor diagnostic: replaced Qt's locale calls with hardcoded values."
+  * Fix QLocale import, otherwise imports hang in AppVeyor.
+  * Make pycodestyle happy WRT to test line length.
+
+  [ Nicholas H.Tollervey ]
+  * Add environmental marker to setup.py for Python 3.5 / black mismatch.
+  * Update docs to highlight missing PyQt dependencies when using pip to install Mu on ARM.
+  * Fix quote related syntax error in setup.py
+  * Fix layout and tests.
+  * Fixes #774. Ensures that open tabs whose files no longer exist doesn't cause a crash when checking for duplicates.
+
+  [ Tim Golden ]
+  * Force checks to run
+  * Sort out what looks like an odd numeric comparison using "is" (Doesn't seem to be deliberate so I've switched to "==")
+
+  [ Nicholas H.Tollervey ]
+  * Fix tests checking normalisation of line endings. Apologies to @tjguk for the cock up.
+
+  [ Tiago Montes ]
+  * Do not 'import mu' in setup.py: get metadata from mu/__about__.py.
+  * Simpler setup.py install_requires: add env markers, drop nice to haves.
+
+  [ camillem ]
+  * Some typos in French Translation
+
+  [ Tiago Montes ]
+  * setup.py now works on Python 3.5: no os.PathLike support in open.
+  * Windows packaging revamp: setup.py is source of dependecy truth.
+  * Windows packaging revamp: nearly there...
+  * Windows packaging revamp: hard-code tk/turtle packages into cfg.
+  * Windows packaging revamp: remove unused imports.
+  * Windows packaging revamp: don't depend on CWD, no os.chdir().
+  * Windows packaging revamp: minor cleanups.
+  * Windows packaging revamp: 'package' extra dependencies in setup.py.
+  * Windows packaging revamp: improved code layout and docstrings.
+  * Windows packaging revamp: near final polishing.
+  * Windows packaging revamp: fix win_installer.py spawns in makefiles.
+  * Windows packaging revamp: pycodestyle now happy with make.py.
+  * macOS packaging: WIP 'package' extra dependency note in setup.py.
+  * macOS packaging: Makefile now includes a 'macos' target.
+  * Completed setup.py's extras_require, dropped requirements.txt.
+  * Updated docs on installation, developer setup, and packaging.
+  * Update Travis testing script and macOS packaging.
+  * Update AppVeyor test and package script.
+  * Make pycodestyle happy WRT __about__.py: now more complex/brittle.
+  * Windows packaging revamp: single source for publisher/author.
+  * Windows packaging: s/f-strings/.format/ to support Python 3.5.
+
+  [ Dave Ames ]
+  * Modified the tooltip for sleep() to mention the different behaviour of time.sleep()
+
+  [ Martin O'Hanlon ]
+  * enable raspbian packages install
+  * remove platform import
+
+  [ Nicholas H.Tollervey ]
+  * Fix style error.
+
+  [ Tiago Montes ]
+  * Extra margin: no breakpoint toggle if click slightly leftwards of 1st column.
+  * Fix editor test: no Mock.assert_called_once in Python 3.5.
+
+  [ Nicholas H.Tollervey ]
+  * Simplification and revision of this mode in light of discussion on the original PR.
+  * Fix problem created by change to black's API.
+  * Fix missing newlines.
+  * Ensure ESP unit tests work with Python 3.5 (no assert_called_once).
+  * Ensure output to REPL when code is run starts with a newline, allow RUN to work when REPL is active.
+  * Fix button toggle issue, annotate metadata to VID/PID specifications in ESP mode.
+  * Bump version to 1.1.0-alpha.1.
+  * Fix missing black dependencies in Windows package.
+  * More black package updates.
+  * Add logging for pip sinatllation command.
+  * Install briefcase from master in GitHub. Update setuptools/pip in Windows installer.
+  * Use standard briefcase for OSX packaging.
+
+  [ Stephen Stagg ]
+  * * Make the OSX font override warning be a logging.debug message (it's never important) * Add a print to stderr during debugger startup that prints a message to the console   pointing users to use the Stop/Continue/Step buttons to control execution flow
+
+  [ Nicholas H.Tollervey ]
+  * Add support for egg-info based packages.
+  * Ensure new button / resize measurements reflect each other.
+
+  [ Tiago Montes ]
+  * macOS packaging: use just published briefcase 0.2.9.
+  * Do not "rm mu_editor.egg-info" in cleanup: breaks -e install.
+  * macOS packaging DRY: Travis now uses "make macos".
+  * Packaging: Assume files read by setup.py are UTF-8 encoded.
+  * Packaging: Use encoding argument in open, not path.join in setup.py.
+  * Packaging: Updated Qt* dependency versions (macOS tests fail otherwise).
+  * macOS packaging DRY: don't run tests/checks twice on Travis.
+  * Fix intermittently failing macOS test.
+  * Packaging: macOS packaging process needs updated setuptools.
+
+  [ Nicholas H.Tollervey ]
+  * Update Windows installer to use customisations. See comments in package/mu_nsist.py for more information.
+  * Fix deletion of egg assets in Windows. Ensure PYTHONPATH references MODULE_DIR.
+  * Windows path fail fixed.
+  * Fix assert_called_once problem because of Python 3.5
+
+  [ Tiago Montes ]
+  * Windows packaging: Use custom pynsist script to create installer.
+  * Windows packaging: Better output spawning custom pynsist script.
+  * Windows packaging: Removed unused imports+assigns in pynsist script.
+  * Windows packaging: Simpler CI diags with pynsist script log to STDERR.
+
+  [ Leroy Levin ]
+  * allow user specify error and warning codes that pycodestyle should ignore
+
+  [ Tiago Montes ]
+  * Qt Save dialog now prevents silent overwrite of *.py files.
+  * Don't add .py extension in save logic: can lead to silent overwrite.
+  * Adding .py extension test non needed: Qt does that for us.
+  * Fix interface test: Qt's getSaveFileName now called with more args.
+  * Test that Editor.restore_session() loads tabs in the correct order.
+  * Don't change iterable order when converting paths to absolute.
+
+  [ Nicholas H.Tollervey ]
+  * Add simplegeneric to the development requirements.txt file.
+
+  [ carlosperate ]
+  * Update dev docs to use normal requirements.txt on Pi.
+
+  [ Sean Tibor ]
+  * added method to suppress auto-save error messages
+
+  [ Gustavo Reynaga ]
+  * Add Electronic Cats Boards.
+  * Add Electronic Cats Boards.
+  * Minor changes in board definition
+  * Fix Board definition
+  * fix VID and PID inverted
+  * Fix space en value Bast Board
+  * Add Value for Future Boards
+  * Delete Electronic Cats Future Board definition
+  * Fix extra TAB space in Bast Pro mini.
+  * Fix space
+
+  [ ogoletti ]
+  * typos
+
+  [ Martin Dybdal ]
+  * ESP-mode: Show current dir in files pane.
+
+  [ Nicholas H.Tollervey ]
+  * Add a 'requirements' file for ReadTheDocs.
+
+  [ carlosperate ]
+  * Add a RtD yaml config file and remove rtd_requirements.txt.
+
+  [ Nicholas H.Tollervey ]
+  * Update ROADMAP.
+  * Fix and tests for CTRL-scroll to control built-in zooming. Tested on Linux. Needs tests on OSX and Windows.
+
+  [ Tiago Montes ]
+  * Translation doc: how to run with a specific locale/language.
+
+  [ carlosperate ]
+  * Update microfs from v1.3.1 to v1.4.1.
+  * Update logger.warn() deprecated method to warning().
+
+  [ Miroslav Biňas ]
+  * slovak translation
+
+  [ Tim Golden ]
+  * Make fonts relative to current file
+  * Make sounds / images relative to current file
+  * Make music relative to current file
+  * Ignore the virtual environment
+  * Code tidy-ups
+
+  [ Nicholas H.Tollervey ]
+  * WiP
+
+  [ Martin O'Hanlon ]
+  * remove edu packages
+
+  [ Nicholas H.Tollervey ]
+  * 100% test coverage
+  * Fix comment mistake.
+  * New tabs should start with template code in them.
+
+  [ Benjamin Shockley ]
+  * Update and rename adafruit.py to circuitpython.py
+  * Added circuitpython.png to images
+  * Renamed AdafruitMode to CircuitPythonMode
+  * Renamed AdafruitMode to CircuitPythonMode
+  * Update circuitpython.py
+  * Update circuitpython.py
+  * Minor update - may be nothing.
+
+  [ Luke Slevinsky ]
+  * Remove incorrect adafruit mode docs
+
+  [ Benjamin Shockley ]
+  * Rename AdafruitMode to CircuitPythonMode
+  * Update and rename test_adafruit.py to test_circuitpython.py
+  * Added CircuitPythonMode to mode selector.
+  * Fixed Typo
+
+  [ Nicholas H.Tollervey ]
+  * Fixes in light of @tjguk's comments about opening files. Piggy backs upon existing functionality for correctly opening files in Windows.
+  * Fix Windows related os.linesep collywobbles.
+
+  [ carlosperate ]
+  * Use rtds logo in README.rst and PyPI description.
+  * Update pip install instructions with quotes for better compatibility.
+
+  [ Benjamin Shockley ]
+  * Update circuitpython.py
+  * Delete adafruit.png
+
+  [ Nicholas H.Tollervey ]
+  * Fixes in light of @carlosperate's comments and feedback.
+  * Add extra free-to-use graphical and SFX assets for PyGameZero examples.
+  * Added tests.
+  * Add test to exercise @seantibor's changes.
+  * Added fix suggested by @tmontes along with related tests.
+
+  [ Yu Wang ]
+  * update pep packages when making windows binaries.
+
+  [ Nicholas H.Tollervey ]
+  * Fix knackered CSS comment lexing in web mode.
+  * Fix clean to remove mu_editor.egg-info.
+  * Minor edits for stylistic purposes.
+  * Bump version to 1.1.0-alpha.2.
+  * A friendlier description of CircuitPython mode.
+  * Ensure web mode based static assets are included in the package.
+  * Fixes for Darwin related environment encoding problem and failure to stop web server.
+  * Add missing HTML templates used in the Flask related examples.
+
+  [ BJH ]
+  * Toggling comments should preserve embedded comments, should not change compact multi-marked comments, and selection should track actual change; includes tests
+
+  [ Tim Golden ]
+  * Fall back to the workspace directory if no file is open when an "asset" button is pressed
+  * Account for both a lack of filename and lack of tab altogether
+  * Refactor and create the assets directory if it doesn't already exist
+
+  [ BJH ]
+  * Fix selection end adjusment; more tests
+
+  [ Nicholas H.Tollervey ]
+  * Minor refactors so Web mode can benefit from these changes.
+
+  [ Yu Wang ]
+  * edited documentation to recommend upgrading local pip
+
+  [ Benjamin Shockley ]
+  * Added Mini SAM Boards
+
+  [ Tiago Montes ]
+  * Simpler, more maintainable, and faster, Unix makefile based checks.
+  * Do not check ./utils/ with pyflakes: keep check as it was before.
+  * Add comment-only requirements.txt to guide beginner developers.
+  * Moved pycodstyle options from Makefile to cross-platform setup.cfg.
+  * Converted pycodstyle targets in Makefile to cross-platform excludes in setup.cfg.
+  * Travis venv away from repo root such that pycodestyle doesn't go into it.
+
+  [ Zander Brown ]
+  * use icons to represent buffer state
+  * show an empty icon when clean
+
+  [ Tiago Montes ]
+  * Use flake8 to drive pycodestyle and pyflakes code checks.
+  * More readable code check config + ignore common venv directories.
+  * Revert Travis config: no need to have venv outside of repository root.
+  * Trigger a Travis rebuild.
+  * Re-worded requirements.txt: shorter, more instructive, URLs for more info.
+
+  [ Zander Brown ]
+  * DIY close buttons
+
+  [ Tiago Montes ]
+  * Trigger a Travis rebuild
+
+  [ Zander Brown ]
+  * Use a label next to the close button instead of tab icon
+
+  [ Tiago Montes ]
+  * Don't remove `mu_editor.egg-info` on make clean: breaks editable installs.
+
+  [ Zander Brown ]
+  * Remove the right tab
+  * Preselect find text
+  * Checker feedback
+  * Use localised names of modes in statusbar
+
+  [ Tim Golden ]
+  * Use flake8 rather than flake/pycodestyle
+  * In the spirit of eating our own dogfood, fix an issue flagged by flake8 which we introduced when adding flake8!
+
+  [ Tiago Montes ]
+  * Disable debug control buttons during debug execution.
+  * Connect timer to handler just once, at timer creation.
+  * Fix dev docs quickstart: update venv pip + works on Windows.
+
+  [ Nicholas H.Tollervey ]
+  * Format the code as per Black.
+  * A more explicit Makefile.
+  * Fix flake8 for Windows.
+  * Fix minor problem with API docs.
+  * Add 'tidy' to Windows makefile. Remove Python 3.5 support in Travis.
+
+  [ Tiago Montes ]
+  * Force GitHub checks to re-run.
+
+  [ Nicholas H.Tollervey ]
+  * Use setup.cfg to configure behaviour of flake8.
+
+  [ Carlos Pereira Atencio ]
+  * Travis: Add Python 3.5 tests without checker
+
+  [ Nick Morrott ]
+  * Where available, provide HTTPS URLs in AppStream metadata
+
+  [ Christian Clauss ]
+  * setup.py: python-dateutil==2.8.0 to fix appVeyor
+  * Upgrade PyQt5, etc.
+
+  [ Mark ]
+  * Docs: remove mbed driver reference from setup.rst
+
+  [ Tiago Montes ]
+  * Windows packaging fix: handle no result when looking for PyPI wheels.
+  * Windows packaging fix: improved PyPI wheel finding for pynsist.
+  * Windows packaging fix: show equivalent wheel version found at PyPI.
+  * Windows packaging: simpler+better messages when finding PyPI wheels.
+  * Windows packaging: exit early when spawned sub-processes fail.
+  * Windows packaging: abort if a package version isn't found at PyPI.
+
+  [ Nicholas H.Tollervey ]
+  * Release 1.0.3 changelog
+
+  [ Tom V ]
+  * Update release.rst
+
+  [ Tim Golden ]
+  * Ensure that, if we're developing inside a venv, the venv python is used
+  * Explicit check for valid releases (rather than letting it drop through with an empty iterable)
+  * Freshen a few versions -- not least so we can actually fetch wheels for PyQt5
+
+  [ Martin Dybdal ]
+  * Theme needs to be set before adding tabs, otherwise Qt acts up
+  * Avoid calling set_theme twice
+  * Fix race condition, where a tab sometimes was renamed to the name of another tab
+  * Fix testcase
+  * New versions of flake8 don't like variables named I, O, or l (E741)
+  * Session wide QApplication fixture
+  * Apply the qtapp fixture where QApplication is needed
+  * Perhaps PyQt5 5.15 is too bleeding edge (released this month)
+  * Try the previous release of PyQt packages
+  * Try moving to a newer xcode version (corresponding to OS X 10.13)
+  * Attempt specifying version of docutils
+  * Remove explicit docutils dependency, upgrading briefcase instead
+  * Backup to briefcase 0.2.9, and reintroduce dependency on docsutil
+
+  [ Tim Golden ]
+  * Add a note to explain the choice of xcode version
+
+  [ Martin Dybdal ]
+  * Allow device recognition based on manufacturer-string.
+  * Separate USB-serial interaction to its own REPLConnection class
+  * Mockup for port selection dropdown in status-bar
+  * A few formatting fixes
+  * Update device selector when devices connect/disconnect
+  * Device-object and QAbstractListModel-based DeviceList
+  * Insert devices to statusbar-dropdown in sorted order
+  * Print device info to log on connect/disconnect
+  * Print VID/PID in hexadecimal
+  * Hopefully fix test case to also run on Windows
+  * Show as icon for 0-1 devices, as menu with 2+. Do not show in other modes.
+  * Reconnect REPL/Plotter/Files panes on device change
+  * Documentation and tests for the port_selection feature
+  * Fix warning on lack of ordering (>, <=, >=) on devices
+  * Make tests run on python 3.5 (avoid mock.assert_called_once)
+  * Stylesheets for night & contrast styles
+  * Use SVG icons, rather than PNG
+
+  [ INACHI Minoru ]
+  * Update po file for ja locale.
+
+  [ Nick Morrott ]
+  * Update details of packaging on Raspberry Pi OS, Debian, and Ubuntu
+
+  [ Nicholas H.Tollervey ]
+  * Black related fixes.
+
+  [ Martin Dybdal ]
+  * Recognize any FTDI device as ESP-device.
+  * Support XinaBox CC03/CS11/CW03 in CircuitPython mode (thanks to @luqmaanb and @KalbeAbbas)
+  * Support 8086.net Commander (thanks to @burtyb and @dglaude)
+  * Adding PyCubed and SAM32 as supported board (thanks to @maholli)
+  * Support PewPew boards in CircuitPython-mode (thanks to @deshipu!)
+  * Add Escornabot Makech to CircuitPython mode (thanks to @sabas1080)
+  * Seeed Wio Terminal support for CircuitPython mode (thanks to @d-c-d)
+  * Add Sparkfun Thing Plus - SAMD51
+  * Fix logging error: was printing "connected" on disconnect
+
+  [ Carlos Pereira Atencio ]
+  * Travis: Update Xcode version to 9.4 to fix brew build issues. (#1097)
+
+  [ carlosperate ]
+  * Tests: Add more qtapp fixtures to fix random test crashes.
+  * Tests: Set qtapp fixture to autorun on all sessions.
+  * Travis: Reduce the log output and build time in macOS.
+
+  [ KKawase0104 ]
+  * Add tab MicroPython update function
+  * changed refering esptool.py from local to package.
+  * remove comment
+  * Modified comment in text area.
+  * Add mode check. Fix mistake to check [Errno 2] message.
+
+  [ Martin Dybdal ]
+  * Attempt at reorganizing firmware flasher and adding instructions
+  * Fix typo: exit -> exitCode
+  * Cross platform detection of esptool.py presence + changed link color
+
+  [ KKawase0104 ]
+  * close the REPL/Files/Plotter when pushing "Erase & write firmware"
+
+  [ KK ]
+  * do make check
+
+  [ KKawase0104 ]
+  * reflect review
+
+  [ Martin Dybdal ]
+  * Add device selector widget to ESP firmware flasher dialog/tab
+  * Increase column span to make room for long label text w. port number
+  * Disable "Erase & Flash firmware" button, when no device is connected.
+  * Remove qtapp as dependency on widget tests, it's now made implicit
+  * Make baudrate customizable by modes
+  * Attempt at fixing #969: Calculate Plotter y min independent of y max
+  * Add lookback, keeps data for y_min/y_max calculation
+  * Avoid showing 0's in the beginning of a plot
+  * Make cursor follow mouse movement
+  * Improved VT100 interaction (text selection works, though still buggy)
+  * Everything seems to work, taking a snapshot before cleaning up
+  * Fix issue with unprocessed partial VT100 commands
+  * Use enum for selection state-machine
+  * Simplify to avoid complex state machine
+  * Fix issue with cursor not moved appropriately on newline
+  * Simplify and write documentation
+  * Simplify some more
+  * Further documentation and small code readability improvements
+  * Move cursor to end of document, before sending carriage return
+  * First batch of test cases
+  * Updated and additional tests for REPLPane process_bytes
+  * Avoid assert_called_once, as unsupported in Python 3.5
+  * Unicode support
+  * Remove debug prints.
+
+  [ carlosperate ]
+  * Serial REPL: Minor tweaks to improve performance.
+
+  [ Martin Dybdal ]
+  * Fix a few issues introduced during rebase
+  * Add right-click menu in local filepane to write to main.py
+  * Only add "Write to main.py" for ".py" files
+
+  [ INACHI Minoru ]
+  * Update po file for ja locale.
+
+  [ Martin Dybdal ]
+  * Fix and add tests (and fix a bug in the process)
+
+  [ carlosperate ]
+  * Package: Add PEP 345 python version required.
+
+  [ Martin Dybdal ]
+  * Remove dead code from modes/base.py (previous migrated into modes)
+
+  [ carlosperate ]
+  * Update tests for environments without QtCharts
+
+  [ Martin Dybdal ]
+  * Add support for Arduino Nano 33 IoT board (fixes #1019)
+
+  [ Carl Karsten ]
+  * Add check for PYBFLASH.
+
+  [ Martin Dybdal ]
+  * An attempt at fixing issue #429
+  * Add comment on why we keep raising the splash screen
+  * Add test case
+  * Make black happy
+
+  [ Nicholas H.Tollervey ]
+  * Ensure make check only checks with black. Use make tidy to apply black.
+
+  [ Wayne ]
+  * Allow serial timeout to be set in settings.json
+  * increase timeout to 2 seconds, related to #1114
+  * code reformated to pass style checker
+  * update the expected timeout argument value in the mock test
+
+  [ Tiago Montes ]
+  * Empty commit to force CI re-run.
+
+  [ Carlos Pereira Atencio ]
+  * Travis: Add arm64 arch build
+
+  [ Tiago Montes ]
+  * Yet another empty commit for force CI re-run (Travis vs myself?!).
+
+  [ Carlos Pereira Atencio ]
+  * Package: Add extra arm checks for environmental markers
+  * Travis: For arm64 add apt packages and wheels from piwheels
+
+  [ carlosperate ]
+  * Travis: Only create a virtualenv on arm64
+  * Package: Set required min version of pytest.
+  * Travis: Set pip confirg for piwheels index and platform for arm64.
+  * Travis: Install only pygame and numpy via piwheels in arm64.
+  * Travis: Set QT_QPA_PLATFORM flag in arm64
+  * Skip more QtChart tests for environments without it.
+  * ESP: Change QProcess.errorOccurred() signal to error() for backwards compability.
+
+  [ Martin Dybdal ]
+  * Handle malformed unicode using "replace" strategy
+  * Assert that we replace malformed unicode input with the standard replacement char
+  * Fix issue with inconsistency in device detection on startup
+  * Make splash screen closes on mouse press
+
+  [ ecasadod ]
+  * Add support for DynOSSAT-EDU boards
+
+  [ Klint Youngmeyer ]
+  * Add initial support for the PyBoard mode. API started. No tests yet.
+  * Add api entried for pyboard: Accel, ADC, CAN, DAC, ExtInt, I2C, LCD, LED.
+  * Add pyboard mode to app and __init__. Update device not found message
+  * Update pyboard API file to be more readable
+  * Update pyboard API for readability. Add Servo, SPI, Switch, Timer, and UART.
+  * Add USB_HID and USB_VCP to Pyboard API
+  * Fix some warnings
+  * Add tests for pyboard. Based heavily on the Adafruit mode tests.
+  * Add Pyboard icon (from https://github.com/micropython/micropython/blob/master/logo/trans-logo.png). Fix capitalization of MicroPython in a couple places
+  * Pyboard VID and PID were incorrectly entered as strings instead of integers. Serial REPL works properly now.
+  * Fix some formatting to pass Black checks
+  * Fix issue found by Travis CI build
+
+  [ Martin Dybdal ]
+  * Adhere to new base class requirements (short_name, device description)
+
+  [ Seth Kerr ]
+  * Add support for CP Sapling + CP Sapling w/ spi flash boards (#1153)
+
+  [ INACHI Minoru ]
+  * Update po file for ja locale.
+
+  [ Carlos Pereira Atencio ]
+  * Temporarily pin boto3 to v1.15.18 to fix urllib3 version conflicts
+
+  [ Martin Dybdal ]
+  * Fix code style error to make black happy
+  * Clean up Pygame Zero naming in a few places, fixes #341
+
+  [ carlosperate ]
+  * CI: Add initial GH Actions workflows.
+
+  [ devdanzin ]
+  * Add quick and dirty .pyw file support: opening, checking, tidying.
+  * Refactor Python filename extension handling and fix tests expecting ".py" only.
+
+  [ Martin Dybdal ]
+  * Break long line to make black happy
+
+  [ devdanzin ]
+  * Remove set() for extensions, check shadow modules in case insensitive way, optmize checking whether file has Python extension (thanks @dybber!).
+
+  [ Carlos Pereira Atencio ]
+  * CI: Remove .app extension to uploaded zipped artefacts
+  * CI: Only build Mu from master pushes and PRs.
+
+  [ carlosperate ]
+  * CI: Remove macOS from Travis test runs.
+
+  [ Tim Golden ]
+  * Ensure the filename is fully-qualified when attempting to open via browser action: if not, Qt will produce a filename of the style "file:abc.def" which it will not recognise as a local filename and will attempt to open via a browser. (#1173)
+
+  [ Martin Dybdal ]
+  * Stretch ESP flasher logarea when admin dialog is resized
+
+  [ carlosperate ]
+  * CI: Separate Win32 installer build and ensure it's uploaded.
+
+  [ Martin Dybdal ]
+  * Attempt at fixing #921 through some changes to HiDPI settings (#1150)
+
+  [ Tim Golden ]
+  * One venv to rule them all (#1072)
+  * Force `make check` to fail if any of the individual checks fails (#1195)
+  * Venv remove pythonpath (#1196)
+  * Venv test coverage (#1198)
+
+  [ devdanzin ]
+  * Make check and tidy use the same maximum line lenght. Fixes #1146. (#1189)
+
+  [ Tim Golden ]
+  * Refactor slightly to support better testing of CSV output (#1199)
+  * Address virtualenv issues on Debian (#1211)
+
+  [ Carlos Pereira Atencio ]
+  * CI: Update GH Action workflow to run tests on amv7 Debian Buster  (#1210)
+
+  [ Tim Golden ]
+  * Refactor settings (#1200)
+
+  [ Martin Dybdal ]
+  * Make sure we use en_GB.utf8 as locale when executing tests. Fixes #736 (#1151)
+  * Fix issue 1157 - update regex to reflect new pyflakes output format (#1161)
+  * Attempt at addressing issue #1147 and get Mu running on Big Sur (#1171)
+
+  [ Tim Golden ]
+  * Post settings tidyup (#1218)
+
+  [ Martin Dybdal ]
+  * Use a fixed unicode locale (en_GB.UTF8) when starting Flask server (#1174)
+
+  [ Carlos Pereira Atencio ]
+  * Remove temporary font workaround for #552 (#1165)
+
+  [ devdanzin ]
+  * Fix FLAKE_REGEX to match new 'path:lineno:col message' format. (#1207)
+  * Add 'const' builtin to MicroPythonMode, move BUILTINS_REGEX to top and add test.
+
+  [ carlosperate ]
+  * microbit: Refactory minification into own its method out of flash().
+  * microbit: Refactor board port and path into function (+more).
+  * microbit: Exit early if we don't get a micro:bit path.
+  * microbit: Extract board MicroPython code to new method.
+  * Update uFlash to the latest version in master.
+  * Update uFlash to latest version of  PR under-review 69.
+  * microbit: Remove the timer for unix flashes, now uFlash always blocks.
+  * microbit: Fix issues with renabling buttons & serial interference.
+  * microbit: Refactor flash process code into flash_start() .
+  * microbit: In flash() start exiting early by calling flash_start().
+  * microbit: Refactor the last force_flash usage into flag with less scope.
+  * microbit: Minor touches to the loggin and comments.
+
+  [ Tim Golden ]
+  * Test failures on python 35 (#1227)
+  * Add version constraints for venv downloads (#1228)
+  * Remove special-casing for numpy (#1225)
+  * Now that pygame has wheels built for Python 3.8 on MacOS bump up our dev and testing range to include 3.8
+
+  [ Andrew McFarland ]
+  * Added Seeedstudio XIAO to the Circuit Python devices. (#1206)
+
+  [ baggio63446333 ]
+  * Add support for Spresense board
+
+  [ Tiago Montes ]
+  * First take at packaging with pup on macOS.
+  * Removed macOS packaging dependecies from setup.py.
+  * Help pup finding dmgbuild by setting PATH.
+  * Attempt at fixing environment variables in Makefile.
+  * Don't install Mu dependencies on macOS build GH action.
+  * Remove pending briefcase related options from setup.py.
+  * No need to remove the macOS directory with `make clean`.
+  * Added two diag commands to Makefile + improved comments.
+
+  [ devdanzin ]
+  * Avoid using any PYTHONPATH set from the Python3 Environment tab.
+  * Guard against running the REPL kernel with a wrong Python executable.
+
+  [ Nicholas H.Tollervey ]
+  * Add a Lego Spike mode.
+
+  [ devdanzin ]
+  * Implement Find Again (F3), fixes #995 (#1164)
+
+  [ Tiago Montes ]
+  * Try a hacked `dmgbuild` to observe behaviour change.
+  * Add a -y to pip uninstall, otherwise CI fails.
+  * Fix moving the DMG final artifact into the upload directory.
+  * Check that pup master's HEAD fixes spawning dmgbuild not in PATH.
+
+  [ devdanzin ]
+  * Make the debugger pane remember column widths while stepping and for new invocations.
+  * Make the debugger remember which dicts were previously expanded.
+  * Also expand lists on update if the user previously expanded them.
+
+  [ Seon Rozenblum ]
+  * Added FeatherS2 and TinyS2 to CircuitPython supported boards
+
+  [ Tiago Montes ]
+  * No need to grab pup from master: just released 1.0.0a8 includes fix.
+
+  [ devdanzin ]
+  * Guard against errors when selecting workspace dir.
+  * Fix the error messages for exceptions raised during mode.workspace_dir.
+  * Test exception handling when calling mode.workspace_dir from Editor.change_mode.
+  * User repr to log exception as it's more informative.
+
+  [ Tiago Montes ]
+  * Readding `check` dependency to `macos` make target.
+  * Must install test dependencies to test before packaging!
+  * Windows packaging (still) needs the [package] extra.
+  * (blank commit - forcing CI re-run) ;)
+
+  [ Carlos Pereira Atencio ]
+  * Appveyor: Fix failures by removing the built exe rename step (#1249)
+
+  [ Tiago Montes ]
+  * First take at packaging with pup, on Windows.
+  * Ran black.
+  * Removed leftovers from Makefile.
+  * Have flake8 ignore the loooong URL line in make.py.
+
+  [ devdanzin ]
+  * Record [fs|inspector|plotter|repl|runner] pane position and use it when creating a new one of same kind.
+  * Test remembering plotter pane position, fix some tests failing due to calling Window.dockWidgetArea in remove_xxx.
+  * Window.fs actually cannot be moved, remove area tracking.
+  * Store areas for normal and debugger python runners separately so moving one pane doesn't change the other's position.
+
+  [ Tiago Montes ]
+  * Fix GHA Windows build filename clashes (hopeful attempt).
+  * Windows GHA is powershell, not bash! (or so I believe)
+  * Bye bye AppVeyor, thanks a lot!
+  * Re-enable checks as Windows packaging dependencies.
+
+  [ carlosperate ]
+  * uFlash: Update to master version + filesystem PRs + Universal Hex.
+  * microbit: Update flash method to support V2.
+  * microbit: Update tests for the V2 updates.
+
+  [ Tim Golden ]
+  * Ensure a default exists for the workspace directory (#1258)
+  * Venv settings not saved (#1259)
+
+  [ Nicholas H.Tollervey ]
+  * Add an animated splash screen that displays until the blocking setup tasks are done.
+  * Raspberry Pi Pico mode (based on ESP mode).
+  * Name changes to make it clear what's going on when device detected.
+  * Use a minifig for Lego mode.... make it a spaceman too. They're the best..! :-)
+
+  [ devdanzin ]
+  * Fix Find and Replace using regex syntax.
+  * Add a test for checking Find hightlights without regex matching.
+  * Test should actually be in test_main.
+  * Fix test expecting old (use regex) values for EditorPane.findFirst().
+
+  [ carlosperate ]
+  * venv: Add installed packages to log in single entry.
+
+  [ Nicholas H.Tollervey ]
+  * Update the lego, pyboard and web logos so they have transparency, work in all themes and look up-to-date for the given mode.
+  * Update version number, copyright year in docs and changelog for new release.
+
+  [ Tim Golden ]
+  * Bring the downloaded wheels along when creating the mu wheel (#1264)
+
+  [ carlosperate ]
+  * Black reformatting in setup.py.
+  * Reduce Python version compatibility up to 3.7.
+
+  [ INACHI Minoru ]
+  * Update po file for ja locale.
+
+  [ Carlos Pereira Atencio ]
+  * wheels: Use a fork of pgzero that pulls a newer version of pygame
+
+  [ carlosperate ]
+  * Add Python 3.8 support again.
+  * CI: Install git in Arm env to fetch pgzero fork from GH.
+
+  [ Tim Golden ]
+  * WIP - Allow the baseline packages to include git installations (#1273)
+
+  [ Carlos Pereira Atencio ]
+  * CI: Add Python 3.5 checks to GitHub Actions. (#1275)
+
+  [ Martin Dybdal ]
+  * Hide admin tabs not relevant for the current mode. Fixes #1125
+  * Fix formatting issues and add test cases
+
+  [ carlosperate ]
+  * make: Use virtualenv instead of venv.
+  * Move black from a modes dependency to a Mu dependency.
+
+  [ Tim Golden ]
+  * Remove wheels before downloading (#1296)
+
+  [ Martin Dybdal ]
+  * Fix issue #1299, make sure microbit widget is shown properly in AdminDialog
+  * Corrections to make tests pass
+  * Add esptool as dependency to simplify user experience in ESP-mode
+
+  [ carlosperate ]
+  * venv: Add macOS Python 3.8 pygame custom wheel for app signing issue.
+  *  CI: Build Mu with Python 3.8.
+
+  [ Martin Dybdal ]
+  * Run 'make tidy' to make black happy
+  * Move esptool dependency from setup.py to mu.wheel.__init__
+
+  [ Nicholas H.Tollervey ]
+  * Update make video to work with small icon within the source tree.
+
+  [ carlosperate ]
+  * venv: For the pygame custom wheel, ensure pgzero doesn't check PyPI.
+
+  [ Martin Dybdal ]
+  * Correction to former PR on minification toggle
+  * Only allow esptool 3.*
+  * Reduce baudrate when flashing firmware to make it more stable
+  * Make panes easier to resize
+  * Apply night/contrast themes to Python 3 REPL and REPL for device-modes
+  * Make line number column width dynamic and follow zoom-levels
+
+  [ Nicholas H.Tollervey ]
+  * Add revised (but incomplete) splash screen animation.
+
+  [ Martin Dybdal ]
+  * Make margins around debugger-marker follow zoom-levels
+
+  [ Nicholas H.Tollervey ]
+  * Ensure .egg-info is cleaned up.
+  * Minor changes to the drag touch points so the colours match the themes and the size is increased for ease of use.
+
+  [ Tim Golden ]
+  * WIP: Make venv setup more robust (#1306)
+
+  [ carlosperate ]
+  * Update GH issue templates with links to GH Discussions.
+
+  [ Tim Golden ]
+  * Mock out venvs (#1318)
+
+  [ Martin Dybdal ]
+  * Move child process shutdown from modes to PythonProcessPane
+
+  [ Carlos Pereira Atencio ]
+  * Unpin pyserial version for the modes dependencies (#1329)
+
+  [ carlosperate ]
+  * uFlash: Add MicroPython v2.0.0-beta.4.
+
+  [ Nicholas H.Tollervey ]
+  * Add initial draft for friendly crash reporting.
+  * Use codewith.mu based crash report endpoint.
+  * First draft of WiP. Splash always on top. Remains even when clicked. Displays (example) logging.
+  * Code tidy.
+  * Commentary.
+  * Add live logging to the splash screen.
+  * Remember the timestamp!
+  * Code tidy, handle when there's no emitter, clean up the log handler.
+  * Minor tidy up.
+  * Crash handling... needs rebasing on crash handling code.
+  * WiP
+  * Stuck logging. Needs fixing. Pushing for wider visibility.
+  * Working tests.
+  * Ensure splash logging handlers are cleaned up during start-up.
+  * Update base64 encoder.
+  * Address feedback from @carlosperate (thank you).
+  * Fix naming collision.
+  * Beta 2
+
+  [ INACHI Minoru ]
+  * Update po file for ja locale.
+
+  [ Nicholas H.Tollervey ]
+  * Changes and Readme updates for 1.1.0-beta.1
+
+  [ Tim Golden ]
+  * Pip fail on first run (#1360)
+
+  [ carlosperate ]
+  * Empty commit to trigger CI.
+
+  [ Tim Golden ]
+  * Tidy up & disable stdout logging (#1361)
+
+  [ Dan Halbert ]
+  * Use adafruit_boards_toolkit to find REPL port on CircuitPython boards
+
+  [ Nicholas H.Tollervey ]
+  * Isolate assets used in the splash screen away from the main program.
+
+  [ Dan halbert ]
+  * adafruit_board_toolkit needs pyserial==3.5
+
+  [ Dan Halbert ]
+  * Add adafruit-board-toolkit as a dependency
+
+  [ Carlos Pereira Atencio ]
+  * Tests: Skip test_Window_remember_plotter_position if QtChart not available. (#1375)
+
+  [ Dan Halbert ]
+  * bump adafruit-board-toolkit to >= 1.0.1 to support Python 3.5 tests
+  * Trigger build
+
+  [ Tim Golden ]
+  * Pip fail2 (#1368)
+  * Remove hard-to-test method (#1379)
+
+  [ INACHI Minoru ]
+  * Update po file for ja locale.
+
+  [ Tim Golden ]
+  * Only try to rebuild the specific sdist, not its dependencies (#1386)
+
+  [ Nicholas Tollervey ]
+  * Use the version of PyGame Zero hosted on PyPI. (#1376)
+
+  [ Tim Golden ]
+  * Add 30s timeout to pytest run (#1388)
+  * More tweaks to testing timeouts (#1389)
+  * Space in username  (#1390)
+
+  [ Nicholas H.Tollervey ]
+  * Final version of the splash screen. ;-) Kudos to @hawkz for this wonderful animation.
+  * Revised splash screen with correct URL.
+
+  [ Tim Golden ]
+  * Remove temporary skips put in place when trying to narrow down what was causing our tests on hang on GH Actions (#1393)
+  * Revert changes from PR #1390 to see if Travis succeeds (#1395)
+
+  [ Carlos Pereira Atencio ]
+  * CI: Increase pip install timeout (#1398)
+
+  [ Tim Golden ]
+  * Space in username  (#1390)
+
+  [ carlosperate ]
+  * Set minimum version for virtualenv dependency.
+
+  [ Nicholas H.Tollervey ]
+  * Add the location of the user's log file to the URL as a base64 encoded value.
+  * Fix doc related warnings and errors.
+  * Update version to beta.3 and add entry to change log.
+
+  [ Tim Golden ]
+  * Revert "Space in username  (#1390)" (#1415)
+
+  [ Nicholas H.Tollervey ]
+  * Update CHANGES to reflect new status of space-in-path issue.
+
+  [ Dan Halbert ]
+  * update dependencies in mu/wheels/__init__.py
+
+  [ carlosperate ]
+  * panes: Fix issue in Files pane menu with empty lists.
+  * panes: Replace 'micro:bit' mention for generic MicroPython device pane.
+
+  [ INACHI Minoru ]
+  * Update japanese translate file.
+
+  [ Carlos Pereira Atencio ]
+  * docs: Add PyQtChars package for Raspberry Pi install instructions
+
+  [ carlosperate ]
+  * Unify black config to single place.
+
+  [ Carlos Pereira Atencio ]
+  * CI: Increase timeout for the make check step (#1465)
+
+  [ carlosperate ]
+  * Move nudatus as a Mu basic dependency.
+  * Remove unneccesary venv wheels dependencies.
+  * Remove unnecessary comments and dependencies from setup.py
+
+  [ Carlos Pereira Atencio ]
+  * venv: Log the output of the ipykernel installiation. (#1443)
+
+  [ carlosperate ]
+  * Add jupyter-client dependency for qtconsole and Python 3.5 compatibility.
+
+  [ Tim Golden ]
+  * Try harder to make things log
+  * Make sure the `pip download` uses the up-to-date pip from the new virtual environment, not whatever Mu is running under Tighten up process output
+  * WIP: * move the splash handler to the main app logger (which will inherit messages from the lower venv logger) * Start to refactor the Exception hierarchy / handling around venv creation
+  * Tidy up + addition to previous commit message: remove the timestamp from the splash output as it's happening in real time; the timestamp will be in the log if we need it, and it clutters the display
+  * Housekeeping
+  * Put the correct esptool PyPI name back in place, changed for testing Put the crash handler hook back in place, removed for testing Refactor the Virtual Environment creation to smooth out the except flow
+  * Remove redundant venv info from session file Explictly save the venv settings once a venv is established + Tidy
+  * Mock out the new run_subprocess helper function VirtualEnvironmentError and its subclasses require a message string
+  * For now move the Splash Logger logic back into the Virtual Environment area; it was causing segfaults during testing when moved into app.py Jupyter Kernel names can't contain spaces Need to create kernel from Mu's executable as the venv will not longer contain the qtconsole module
+  * Jupyter kernel install uses Mu interpreter, not venv
+  * Tidy
+
+  [ Nicholas H.Tollervey ]
+  * Changelog and version bump for beta-4.
+
+  [ carlosperate ]
+  * Remove adafruit_board_toolkit from venv packages.
+  * Lock PySerial to v3.* (3.5 min required for adafruit-board-toolkit).
+
+  [ INACHI Minoru ]
+  * Update japanese translate file for mu-1.1.0.beta4
+
+  [ carlosperate ]
+  * Update black usage of deprecated PY36_VERSIONS.
+  * Update formatting to confort to black v19.10b0 to 21.4b2.
+
+  [ Nicholas H.Tollervey ]
+  * Add right-click menu to editor for pasting to REPL if text is selected and REPL active.
+  * Add support for PythonProcessRunner as target for paste.
+  * Override default context menu.
+  * Correctly handle fragments in MicroPython REPL.
+  * Ensure paste menu item only appears in Python3 mode with an interactive process.
+
+  [ Carlos Pereira Atencio ]
+  * Update virtualenv dependency to a version packing pip v19.3
+
+  [ carlosperate ]
+  * CI: Add Arm Raspbian Stretch (virtualenv) test environment.
+
+  [ Dan Halbert ]
+  * Update adafruit-board-toolkit to ~=1.1 to fix M1 MacOS issues
+
+  [ ajs256 ]
+  * Make the issue template more instructive
+
+  [ carlosperate ]
+  * CI: Add Raspberry Pi OS Buster runner.
+  * CI: Use the Rasbian service ssh credentials directly.
+  * Tiny addition to the logs to catch more OS info.
+  * venv: Install each venv wheel individually.
+  * uFlash: Add micro:bit MicroPython v2.0.0-beta.5.
+
+  [ Tim Golden ]
+  * Improve logging & test coverage for virtual_environment (#1622)
+
+  [ carlosperate ]
+  * uFlash: Ensure the fs hex string injected into the Universal Hex is memory aligned.
+
+  [ Tim Golden ]
+  * Detect change of mu version (#1624)
+
+  [ ajs256 ]
+  * Don't show crash reporter for KeyboardInterrupts (#1625)
+
+  [ carlosperate ]
+  * Only enable on-screen logging if the MU_LOG_TO_STDOUT env variable is set.
+  * Update deprecated logger.warn() to warning().
+
+  [ INACHI Minoru ]
+  * update japanese po file.
+
+  [ Nicholas H.Tollervey ]
+  * Ensure, if no file extension provided, a .py one is used. Fixes #1571.
+  * Ignore dot files.
+
+  [ carlosperate ]
+  * uFlash: Sync with the latest version in repo main branch.
+
+  [ Carlos Pereira Atencio ]
+  * Convert GitHub bug report Issue Template to an Issue Form.
+  * Enable blank issues in GitHub for the crash reporter.
+
+  [ carlosperate ]
+  * uFlash: Update to latest version with micro:bit V2 MicroPython v2.0.0.
+
+  [ Tim Golden ]
+  * venv: Use tagged zipfiles for downloaded wheels (#1650)
+
+  [ carlosperate ]
+  * package: Add wheel zip files to the package data.
+  * venv: Set a default process stdout/err encoding if we can't determine it.
+
+  [ Nicholas H.Tollervey ]
+  * Bump version to beta 5.
+  * Beta.5 changelog update.
+  * Final update to CHANGES
+
+  [ carlosperate ]
+  * Set ipykernel version to be < 6.0 for macOS 10.13 compat.
+
+  [ Nicholas H.Tollervey ]
+  * Ensure pup virtualenv is always deleted when making clean.
+  * Force pup venv removal
+
+  [ carlosperate ]
+  * Remove qtconsole from user venv and permanently leave ipykernel.
+
+  [ Nicholas H.Tollervey ]
+  * Fix for #1474 when QLabel is deleted by Qt before parent Python object is GC'd.
+  * Web mode checks existence of templates directory before starting local server.
+  * Documentation update to make it obvious that you need to install Python (along with a link to some comprehensive instructions), if you want to actually develop Mu. Also added a link to the venv documentation as a bonus.
+  * Once again, but this time with added clarity.
+
+  [ carlosperate ]
+  * Change formatting to work well with all versions of Black.
+
+  [ INACHI Minoru ]
+  * Update japanese po file.
+
+  [ carlosperate ]
+  * Add util script to fetch the GH releases download count.
+  * venv: Pass splash logger to wheels.download().
+
+  [ Keith Packard ]
+  * Overload insertFromMimeData instead of paste in REPL window
+
+  [ Ethan Spoelstra ]
+  * Added logic to function under Crostini on ChromeOS and return correct CIRCUITPY path if it exists
+  * Applied formatting suggestions
+  * Make string localizable
+
+  [ Nicholas H.Tollervey ]
+  * Ensure Mu always appears on the screen when calculating the window size and position.
+
+  [ carlosperate ]
+  * Remove the splash screen stay-on-top flag.
+  * venv: Hide pop-up command promps on Windows.
+
+  [ Nicholas H.Tollervey ]
+  * Allow a user to change manually change their locale via a new tab in the admin dialog.
+  * Fix typo
+
+  [ Keith Packard ]
+  * .github: Switch test matrix from Ubuntu 16.04 to Ubuntu 18.04
+  * Restore QTextEdit-based REPL font sizes when theme is set
+
+  [ carlosperate ]
+  * Fix crash when user script encoding cookie is invalid.
+
+  [ Keith Packard ]
+  * Allow load_pixmap to be given a target size
+  * Pass explicit size to load_pixmap where available
+
+  [ Ben Williams ]
+  * Added SVG versions of all circular button images in mu/resources/images
+  * Removed tiny ellipse from most images and fixed sounds.svg to display correctly
+  * Removed stray comment closing
+
+  [ Keith Packard ]
+  * Move svg icons out of sub folder
+  * Fill SVG buttons with white
+  * Prefer SVG icons over PNG icons
+  * Remove explicit extensions from a couple of icon names
+  * Add SVG images for UI elements
+  * Add mu icon in SVG form
+  * Add SVG versions of circuitpython and python icons
+  * Switch themes to use the SVG icons
+
+  [ Miro Hrončok ]
+  * Avoid TypeErrors when moving windows to float positions
+  * Adapt tests for int window size/move
+
+  [ Zander Brown ]
+  * admin: add an icon to the language tab
+
+  [ Nicholas H.Tollervey ]
+  * Fix failing unit test for window autosize calculation.
+  * Bump version to beta-6 and write up CHANGES.
+  * Ensure icon size is always mocked in the expected manner.
+  * Ensure clean up of venv-pup if a previous build failed.
+
+  [ carlosperate ]
+  * Depend on ipython_genutils to fix issue with missing ipykernel dependency.
+
+  [ Keith Packard ]
+  * Continuously scale button bar based on window width
+
+  [ Tiago Montes ]
+  * Initial work in revamping i18n process using Babel.
+  * Revamping the I18N process using Babel: make.py version!
+  * No need for shell=True on subprocess.run.
+  * Really: no need for shell=True on subprocess.run!
+  * DRY: Makefile translate targets now delegate to make.py.
+  * Black-ifying make.py.
+  * No f-strings on make.py: keep 3.5 compatibility.
+  * New make target: translate_test launches Mu in the given LOCALE.
+  * Full revamp of "how to translate Mu" technical docs.
+  * I18N process revamp: LANG is more user-friendly than LOCALE.
+  * Virtual env runtime fix for running as Linux AppImage.
+
+  [ Vasco Mora ]
+  * fixing 'de_DE' mu.po file: replacing time zone '+CEST' with '+0200'
+  * prep Babel 'de_DE' xlate
+  * fixing 'ja' mu.po file: replacing time zone '+CEST' with '+0900'
+  * prep Babel 'ja' xlate
+  * fixing 'pl' mu.po file: replacing time zone '+CEST' with '+0200'
+  * prep Babel 'pl' xlate
+  * fixing 'vi' mu.po file: replacing time zone '+CEST' with '+0200'
+  * prep Babel 'vi' xlate
+  * prep Babel 'es' xlate
+  * prep Babel 'fr' xlate
+  * prep Babel 'sk_SK' xlate
+  * prep Babel 'sv' xlate
+  * prep Babel 'zh_CN' xlate
+  * prep Babel 'pt_BR' xlate
+
+  [ Nicholas H.Tollervey ]
+  * Minor translation string update.
+
+  [ Vasco Mora ]
+  * update xlate files with logic.py new/fixed English strings
+  * update xlate files with logic.py new/fixed English strings - de_DE
+  * update xlate files with logic.py new/fixed English strings - all others
+
+  [ Tiago Montes ]
+  * More robust AppImage venv executable symlinking.
+  * Use --symlinks in virtualenv creation on non-Windows platforms.
+  * Blackify virtual_environment module.
+  * Update Makefile with linux packaging target.
+  * Add Linux AppImage to build CI workflow.
+  * Don't check before Linux AppImage packaging.
+  * Revert the previous commit.
+  * Linux AppImage CI workflow: needs xvfb + fix artifact extension.
+  * No need for custom pgzero/pygame wheels on macOS anymore.
+  * Removed unused import.
+
+  [ Владимир Раковиц ]
+  * Add ru_RU translation
+
+  [ INACHI Minoru ]
+  * Fix typo of Japanese translation file.
+
+  [ devdanzin ]
+  * If get_save_path receives an empty path, avoid adding a .py extension to it.
+  * Highlight F-strings the same as regular strings.
+  * Also highlight triple quoted f-strings, fix tests.
+  * Make test_theme_apply_to call counts depend on whether the lexer knows about f-strings.
+
+  [ carlosperate ]
+  * CI: Add macos-ci again to the tests workflow.
+  * Fix Mu version format to math PEP 440.
+
+  [ devdanzin ]
+  * Fix toggling line comment deleting the first character of next line.
+  * Avoid Web mode adding duplicate environment variable to the Python3 Environment.
+  * Test that restore_session can handle old envars saved as lists.
+
+  [ Rafael Fontenelle ]
+  * microbit: fix typo
+  * Update Brazilian Portuguese translation
+  * Fix typos in Brazilian Portuguese translation
+
+  [ Vasco Mora ]
+  * Updating pt-PT translation (#1795)
+
+  [ devdanzin ]
+  * Test that we handle old envars containing duplicate entries by converting to dict of unique ones.
+
+  [ Tim Golden ]
+  * Issue1831 isolate venv (#1921)
+
+  [ carlosperate ]
+  * Fixes #1922 - fix string for better translatability.
+  * PR #1923 follow up, remove pt_BR fuzziness & add pt_PT string.
+
+  [ Nicholas H.Tollervey ]
+  * Bump to beta 7, add changelog.
+  * Delete zip file of wheels when make clean (avoids uploading the zip to PyPI.
+
+  [ themarkness ]
+  * micro:bit: Update board IDs to support V2.2
+
+  [ carlosperate ]
+  * make: Invoke python modules explicity via Python interpreter.
+  * make: Complete make.py `docs` command, and update `clean`.
+
+  [ Carlos Pereira Atencio ]
+  * CI: Update the RaspPi Buster image to latest & add legacy release.
+
+  [ Miroslav Biňas ]
+  * slovak translation update for upcomming version
+
+  [ grovz ]
+  * Update mu.po
+  * Update mu/locale/ru_RU/LC_MESSAGES/mu.po
+  * Update mu/locale/ru_RU/LC_MESSAGES/mu.po
+  * Update mu/locale/ru_RU/LC_MESSAGES/mu.po
+  * Apply suggestions from code review
+  * Apply suggestions from code review
+  * Apply suggestions from code review
+  * Apply suggestions from code review
+  * Update mu.po
+
+  [ carlosperate ]
+  * docs: Optimise images for smaller size.
+
+  [ INACHI Minoru ]
+  * Update japanese po file.
+
+  [ Carlos Pereira Atencio ]
+  * Set black version upper bound to <22.1.0.
+  * Fix issue with incorrect argument given to pytest.mark.skip().
+
+  [ Nicholas H.Tollervey ]
+  * Add Russian language to locale selection.
+
+  [ Rong Mantle Bao ]
+  * Improve zh-CN translation
+
+  [ Nicholas H.Tollervey ]
+  * Bump version number to 1.1.0
+
+  [ INACHI Minoru ]
+  * Update japanese po file.
+
+  [ Carlos Pereira Atencio ]
+  * Update venv Flash version to fix issue with incompatible dependency.
+
+  [ Nicholas H.Tollervey ]
+  * Bump to 1.1.1.
+
+  [ carlosperate ]
+  * venv: Add Flask subdependency upper bound limit.
+
+  [ Nicholas H.Tollervey ]
+  * Bump version of Flask.
+
+  [ Keith Packard ]
+  * tests/venv/test_process: Import 'time' in test_run_blocking_timeout test
+  * Add snek mode
+
+  [ carlosperate ]
+  * Remove unused .travis.yml and todo.txt files.
+  * Move coverage settings from .coveragerc to setup.cfg.
+  * Move pytest config from pytest.ini to setup.cfg file.
+
+  [ Vasco Mora ]
+  * Add dutch locale
+
+  [ Tiago Montes ]
+  * Build Linux AppImage on CI: no need for custom branch?
+
+  [ Charalampos Stratakis ]
+  * Fix typo in the Russian locale
+
+  [ Carlos Pereira Atencio ]
+  * Clamp click version to workaround issue with black
+  * CI: Update deprecated Window 2016 image to 2019.
+  * CI: apt update before installing in Raspbian image.
+  * Fix tests by reducing builtin mock scope from global to module.
+  * CI: Move AppImage runner to a docker container.
+
+  [ carlosperate ]
+  * CI: Change docker image from Debian Py 3.8 to Ubuntu 16.04.
+
+  [ Carlos Pereira Atencio ]
+  * CI: Move from using standard Ubuntu 16:04 image to custom Mu one.
+  * venv: Use -I flag to isolate Jupyter kernel installation in venv.
+  * venv: Log pip version on venv creation, add more logging.
+  * CI: Update RPi OS image to 2022-04-07.
+  * CI: Increase timeout time for PiOS on Qemu test runs.
+  * venv: User short paths for the Python executable.
+
+  [ Grygoriy Gromko ]
+  * Create LC_MESSAGES
+  * Delete mu/locale/uk_UA directory
+  * Create mu.po
+  * Add files via upload
+  * Update mu.po
+  * Delete mu.po
+  * Add files via upload
+  * Delete mu.mo
+  * Fix translations
+
+  [ Nicholas H.Tollervey ]
+  * Add support for hosting simple websites on PythonAnywhere.
+  * Don't use fstrings because Python 3.5 :-)
+  * Remove fstrings in tests.... doh!
+
+  [ Carlos Pereira Atencio ]
+  * On uPy files error close panel before showing error.
+  * Update virtualenv depedency min version to v20 for --symlinks flag.
+
+  [ Nicholas H.Tollervey ]
+  * Changes in light of reviews.
+  * Error message clean up
+
+  [ Carlos Pereira Atencio ]
+  * Remove ESP-related USB VIDs & PIDs from other modes.
+
+  [ Tiago Montes ]
+  * Don't use our own dmgbuild fork to package Mu on macOS.
+
+  [ dalesa ]
+  * Added a MOTD message.
+
+  [ String-me-along ]
+  * Added inspirational quote
+  * Fixed black error
+
+  [ Jeffrey04 ]
+  * EUROPY2022 new motd
+  * EUROPY2022 merging master
+  * EUROPY2022 fix motd message
+
+  [ Anthony Shaw ]
+  * update the initial instructions to specify 3.8
+  * replace appdirs with platformdirs
+
+  [ Johanna England ]
+  * Add message of the day
+
+  [ Nicholas H.Tollervey ]
+  * Ensure creation of asset directories only happens in workspace_dir in web mode.
+
+  [ Johanna England ]
+  * Fix typo in translation docs
+  * Clarify sentence in translation docs
+  * Replace dead link in user experience
+  * Replace dead link to coverage docs
+  * Fix typo in packaging docs
+  * Replace dead link in packaging docs
+  * Correct formatting in design docs
+
+  [ Paul Cutler ]
+  * Fix broken link to Adafruit in Packaging Processes section
+  * Fix issue 1328 - link to virtual env guide at Real Python
+  * Fix typo / spelling of Additionally in the first note
+
+  [ Nicholas H.Tollervey ]
+  * More complete and tested solution.
+
+  [ Anthony Shaw ]
+  * Update index.rst
+
+  [ Carlos Pereira Atencio ]
+  * Set QT_QPA_PLATFORM=wayland env var when running on wayland.
+
+  [ Scott Shawcroft ]
+  * Add code to ignore OSC commands
+
+  [ Carlos Pereira Atencio ]
+  * Update pyflakes regex to match pre and post v2.5.0 release. (#2323)
+
+  [ Scott Shawcroft ]
+  * Refine test comments
+
+  [ Fredrik Garneij ]
+  * Added support for new ESP based board
+
+  [ Nicholas H.Tollervey ]
+  * Fix formatting.
+
+  [ Jason Yundt ]
+  * Fix None being lowercase in checker messages
+
+  [ Carlos Pereira Atencio ]
+  * Minor reworing of a comment in mu/logic.py
+
+  [ Nicholas H.Tollervey ]
+  * Bump version to 1.1.2
+
+  [ Carlos Pereira Atencio ]
+  * Move esptool from user-venv dependency to vendor it with Mu.
+
+  [ LGTM Migrator ]
+  * Add CodeQL workflow for GitHub code scanning
+
+  [ Carlos Pereira Atencio ]
+  * wheel: Add --package flag to mu.wheels to include extra pip flags.
+
+  [ Nicholas H.Tollervey ]
+  * Bump version to 1.2.0 (with the inclusion of Snek, the minor bump was suggested, rather than point release).
+
+  [ Carlos Pereira Atencio ]
+  * CI: Update version of used Actions to remove warnings. (#2359)
+  * Update util to retrieve GH download stats with more info.
+  * make: Add Makefile target to build Linux AppImage with Docker.
+  * CI: Exclude Python 3.5 and 3.6 from running in Ubuntu-latest runner.
+  * Add temporary workaround to fix macOS installer builds. (#2366)
+  * CI: Workaround CodeQL pip install issues by changing Ubuntu version. (#2367)
+  * Remove temp workaround for macOS installer builds. (#2369)
+
+  [ Neradoc ]
+  * limit move_cursor_to to moving back a line
+
+  [ Carlos Pereira Atencio ]
+  * Make: Use a pup fork to make mac installer compatible with OS X 10.12.
+
+  [ Tim Golden ]
+  * WIP: Prevent Mu from opening more than one instance (#2297)
+
+  [ Tyler ]
+  * fix 2375 (#2376)
+
+  [ Miro Hrončok ]
+  * Avoid a race condition when creating LOG_DIR (#2281)
+
+  [ Tyler ]
+  * Fixes #2315 (#2377)
+
+  [ Gregor14 ]
+  * Correct word 'Polski' in dialogs.py
+
+  [ Carlos Pereira Atencio ]
+  * make: Update Linux Docker recity to create tar file.
+
+  [ Nicholas H.Tollervey ]
+  * Bump to 1.2.1
+
+  [ Carlos Pereira Atencio ]
+  * CI: Update deprecated Ubuntu and macOS runners. (#2417)
+
+  [ Tyler ]
+  * Fix #2375 but without timing dependent tests (#2415)
+
+  [ Miro Hrončok ]
+  * Remove shebang from a non-executable script (#2410)
+
+  [ Anthony Shaw ]
+  * Double pip timeout each time it times out (#2296)
+
+  [ Chung-Fan ]
+  * adding new MOTD line
+  * modifying the MOTD line
+
+  [ Joanna Bryson ]
+  * Update logic.py message about passing silently europython2023
+
+  [ prochazka-jan ]
+  * Add MOTD #1
+
+  [ Chung-Fan ]
+  * Revert "modifying the MOTD line"
+  * Revert "adding new MOTD line"
+
+  [ Yicheng Zhang ]
+  * Added a new message of a day (EuroPython 2023)
+
+  [ rahulab29 ]
+  * new message of the day Europython_2023
+
+  [ Chung-Fan ]
+  * modifying the MOTD line: EuroPython2023
+
+  [ JinnaKvG ]
+  * Add a new message of the day.
+
+  [ prochazka-jan ]
+  * Add MOTD #1
+  * Correct the syntax error. lines 176;177
+
+  [ Patchanon Tungkiatsilp ]
+  * New welcome messages
+
+  [ Chung-Fan ]
+  * add documentation for pyqt6 mac workaround
+
+  [ Carlos Pereira Atencio ]
+  * wheel: Temporarily pin pygame max version for venv. (#2425)
+
+  [ Martin Lorenz ]
+  * changed Maintainer for this branch
+  * Remove erronous blank line in debian/control
+
+ -- Martin Lorenz <martin@lorenz.im>  Thu, 21 Sep 2023 23:37:26 +0200
+
 mu (1.0.0~beta8) stretch; urgency=medium
 
   * Repackage
