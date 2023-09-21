@@ -8,7 +8,7 @@ simple and there exist plenty of tools to help you.
 You can contribute in three ways:
 
 * Improve or extend an existing translation.
-* Create a completely new translation for a new locale.
+* Create a completely new translation for a new language.
 * Make a translation of `Mu's website <https://codewith.mu/>`_ (see the
   :doc:`website` guide for how to do this).
 
@@ -16,114 +16,84 @@ In both cases you'll be using assets found in the ``mu/locale`` directory.
 
 Mu uses Python's standard `gettext <https://docs.python.org/3.6/library/i18n.html>`_
 based internationalization API so we can make use of standard tools to help
-translators, such as `poedit <https://poedit.net/>`_.
+translators, such as `babel <https://babel.pocoo.org/en/latest/>`_ or
+`Poedit <https://poedit.net/>`_.
 
-.. note::
+.. admonition:: Non-technical users
 
-    You may need to run ``make translate`` as part of this process. This, in
-    turn, depends on the presence of the ``pygettext.py`` command on your
-    system. The ``pygettext.py`` command should come installed as part of the
-    Python language, but some operating systems don't include it by default. 
-    For example, to install ``pygettext.py`` on Fedora you must make
-    sure the ``python3-tools`` package is installed.
+    If you are not a technical user and you are not familiar with the
+    tools and jargon we use in this guide,
+    please reach out to us by
+    `creating a new issue in GitHub <https://github.com/mu-editor/mu/issues/new>`_.
 
-To manually change the locale Mu uses for translation strings, look in
-``mu/__init__.py`` for the following lines of code at the start of the file::
+    We will help you set up a user-friendly tool that you can use to
+    contribute new or improved translations, and integrate them into the next
+    Mu release.
 
-    # Configure locale and language
-    # Define where the translation assets are to be found.
-    localedir = os.path.join('mu', 'locale')
-    # Use the operating system's locale.
-    current_locale, encoding = locale.getdefaultlocale()
-    # Get the language code.
-    language_code = current_locale[:2]
-    # DEBUG/TRANSLATE: override the language code here (e.g. to Spanish).
-    # language_code = 'es'
-    gettext.translation('mu', localedir=localedir,
-                        languages=[language_code], fallback=True).install()
-
-As the comment suggests, temporarily update the ``language_code`` to the target
-language for translation, make your changes, as explained below, and re-run
-Mu to check your updates are correct and appropriate for your target locale.
+    We welcome translations from all users!
 
 
-Improve an Existing Translation
--------------------------------
 
-If you want to improve or extend an existing translation you should edit a file
-called ``mu.po`` for the target locale. Such files for existing translations
-are found in the ``mu/locale/<LOCALE>/LC_MESSAGES`` directory (remember to
-replace ``<LOCALE>`` with the value for the locale's language / country code
-combination `as specified by gettext convention <https://www.gnu.org/software/gettext/manual/html_node/Locale-Names.html>`_).
+How To
+------
 
-Open the ``mu.po`` file in an editor or translation tool of your choice (we
-recommend `poedit <https://poedit.net/>`_ as a great solution for this). If
-you're using a plain text editor, remember to make your changes to the message
-string (``msgstr``) *not* the message id (``msgid``). 
-
-Once you've saved and, most importantly, **checked your translation strings
-appear as expected in Mu**, commit your changes and create a pull request via
-GitHub. Alternatively, if you're not a technical user,
-`create a new issue in GitHub <https://github.com/mu-editor/mu/issues/new>`_
-and attach your ``mu.po`` file along with details of the locale.
+Updating or creating a new translation for Mu's user interface requires
+:doc:`setting up a development environment <setup>` beforehand and,
+from there,
+is a four-step process:
 
 
-Create a New Translation
-------------------------
+1. Produce an up to date ``mu.po`` file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There are three steps to creating a new translation:
+Open a CLI shell,
+change the working directory to Mu's repository root,
+and run::
 
-1. [Optional] Use ``make translate`` to create an up-to-date ``messages.pot`` file.
-2. Use a tool like `poedit <https://poedit.net/>`_ to load the ``messages.pot`` file, select a language / locale and create appropriately translated messages.
-3. Save the resulting ``mu.po`` file into the ``mu/locale/<LOCALE>/LC_MESSAGES`` directory, replacing ``<LOCALE>`` with the value for the locale's language / country code combination `as specified by gettext convention <https://www.gnu.org/software/gettext/manual/html_node/Locale-Names.html>`_.
+    $ make translate_begin LANG=xx_XX
 
-Taking each in turn, you may (optionally) need to create an up-to-date
-specification of all the strings found within Mu that need translating. This is
-the ``messages.pot`` file and you simple need to issue the following command
-to regenerate it::
+Where ``xx_XX`` is the identifier for the target language.
 
-    $ make translate
+This creates (or updates, if it already exists) the ``mu.po`` file under the
+``mu/locale/xx_XX/LC_MESSAGES/`` directory --
+this is where the original British English messages
+are associated with their localized translations.
 
-You'll see some output ending with the message::
 
-    New messages.pot file created.
-    Remember to update the translation strings found in the locale directory.
+2. Translate Mu user interface strings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To create a new translation you'll need to use a tool such as
-`poedit <https://poedit.net/>`_ to load the ``messages.pot`` and configure
-output for a new locale. The resulting output is a ``mu.po`` file that needs
-to be saved in the ``mu/locale/<LOCALE>/LC_MESSAGES`` directory, replacing
-``<LOCALE>`` with the value for the new locale's language / country code
-combination
-`as specified by gettext convention <https://www.gnu.org/software/gettext/manual/html_node/Locale-Names.html>`_.
+Use a tool of your choice to edit the ``mu.po`` file:
 
-This process is illustrated below, with the cross-platform and open-source
-`poedit <https://poedit.net/>`_ tool.
+* Those looking for a GUI based tool can try out `Poedit <https://poedit.net>`__.
+* Others might prefer a plain text editor, which will be sufficient.
 
-Create New Translation
-++++++++++++++++++++++
 
-.. image:: po1.png
+3. Check the translation result
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Select ``messages.pot``
-+++++++++++++++++++++++
+As you progress,
+check the translation results by launching Mu with::
 
-.. image:: po2.png
+    $ make translate_test LANG=xx_XX
 
-Specify the New Locale
-++++++++++++++++++++++
+As before,
+``xx_XX`` is the identifier for the target language.
 
-.. image:: po3.png
+When done checking,
+quit Mu,
+and go back to step 2. as many times as needed.
 
-At this point, simply use `poedit <https://poedit.net/>`_ to fill in the
-translated messages from the source messages.
 
-Save ``mu.po`` when Finished
-++++++++++++++++++++++++++++
+4. Submit your translation work
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note::
+This process produced two new or updated files,
+both under the ``mu/locale/xx_XX/LC_MESSAGES/`` directory:
 
-    Please make sure you check your translation is appropriate and correct for
-    your target before submitting your work.
+* ``mu.po`` containing the text based source of the translation strings.
+* ``mu.mo`` containing a compiled version of the above, used by Mu at runtime.
 
-.. image:: po4.png
+Commit your changes and create a pull request via GitHub.
+
+Thanks!

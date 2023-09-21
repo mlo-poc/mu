@@ -72,17 +72,22 @@ the release looks, behaves and works as expected before pushing to live.
 Raspberry Pi
 ++++++++++++
 
-When asked, Serge Schneider, a maintainer of Raspbian at the Raspberry Pi
-Foundation takes our latest release and updates the Raspbian package
-repositories. It means that all you need to do to install Mu on Raspbian is
-type::
+Raspberry Pi OS (previously called Raspbian) is the official operating system
+for the Raspberry Pi and features Mu as Recommended Software. Raspberry Pi OS
+uses the Mu packages contributed to Debian by
+`Nick Morrott <https://twitter.com/nickmorrott>`_.
 
-    $ sudo apt-get install mu
+To install Mu on Raspberry Pi OS from the command line, type::
+
+    $ sudo apt install mu-editor
+
+Alternatively, Mu can be installed from the Recommended Software menu in the
+Programming section.
 
 .. warning::
 
-    Since Mu for Raspberry Pi is packaged by a third party, our latest releases
-    may not be immediately available.
+    Since Mu for Raspberry Pi OS is packaged by a third party, our latest
+    releases may not be immediately available.
 
 Windows Installer
 +++++++++++++++++
@@ -133,20 +138,28 @@ installers. This process if coordinated by the amazing
 
     Thank you Thomas!
 
-The configuration for ``pynsist`` are the ``win_installer32.cfg`` and
-``win_installer64.cfg`` files (one each for 32bit and 64bit installers) in the
-root of the repository. Please check out the
-`specification for configuration files <https://pynsist.readthedocs.io/en/latest/cfgfile.html>`_
-for more information.
+The required configuration file for ``pynsist`` is automatically generated at
+packaging time, under a temporary working directory.
+The motive for that arises from the need to ensure that Mu's dependencies are
+sourced from a single place, which is ``setup.py``.
+The ``win_installer.py`` script handles that,
+runs ``pynsist``,
+moves the resulting installer executable to the ``dist`` directory,
+and cleans up.
+If you're interested in learning more,
+the script includes comments with detailed notes
+(also, check out the ``pynsist``
+`specification for configuration files <https://pynsist.readthedocs.io/en/latest/cfgfile.html>`_).
+
 
 The automated builds are unsigned, so Windows will complain about the software
 coming from an untrusted source. The official releases will be signed by
 me (Nicholas Tollervey - the current maintainer) on my local machine using
 a private key and uploaded to GitHub and associated with the relevant release.
-`The instructions for cyrptographically signing installers <https://pynsist.readthedocs.io/en/latest/faq.html#code-signing>`_
+`The instructions for cryptographically signing installers <https://pynsist.readthedocs.io/en/latest/faq.html#code-signing>`_
 explain this process more fully
 (the details of which are described
-`by Mozilla <https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Signing_an_executable_with_Authenticode>`_).
+`by Mozilla <https://developer.mozilla.org.cach3.com/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Signing_an_executable_with_Authenticode>`_).
 
 Use the ``make`` command to build your own installers::
 
@@ -176,14 +189,13 @@ OSX App Installer
 We use Travis to automate the building of the .app and .dmg installer (see the
 ``.travis`` file in the root of Mu's GIT repository for the steps involved). 
 This process is controlled by
-`Briefcase (part of the BeeWare suite of tools <https://briefcase.readthedocs.io/en/latest/>`_
+`Briefcase (part of the BeeWare suite of tools <https://briefcase.readthedocs.io/en/latest/>`_)
 which piggy-backs onto the ``setup.py`` script to build the necessary assets.
 To ensure Mu has Python 3 available for it to both run and use for evaluating
 users' scripts, we have created a portable/embeddable Python runtime whose
 automated build scripts can be found
 `in this repository <https://github.com/mu-editor/mu_portable_python_macos>`_.
-This (not the version of Python on the user's machine) the version of Python
-used by Mu.
+This is the Python version used by Mu (not the one on the user's machine).
 
 The end result of submitting a commit to Mu's master branch is an
 automatically generated installable for OSX. These assets are un-signed, so OSX
@@ -200,8 +212,18 @@ Fedora based distributions.
 Debian
 ======
 
-Work on packaging for Debian is at an advanced stage and ongoing. You can
-track progress at `this ticket <https://github.com/mu-editor/mu/issues/58>`_.
+Mu (and the MicroPython runtime) were packaged for Debian and Ubuntu by
+`Nick Morrott <https://twitter.com/nickmorrott>`_ and have been available to
+install since the releases of Debian 10 "buster" and Ubuntu 19.04 "Disco Dingo".
+
+To install Mu on Debian/Ubuntu from the command line, type::
+
+    $ sudo apt install mu-editor
+
+.. warning::
+
+    Since Mu for Debian/Ubuntu is packaged by a third party, our latest
+    releases may not be immediately available.
 
 Fedora
 ======

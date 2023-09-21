@@ -56,6 +56,10 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Emacs
+*~
+TAGS
+
 # PyBuilder
 target/
 
@@ -77,3 +81,11 @@ target/
 
 # Movie
 *.mp4
+
+# Virtual Environment
+.venv*/
+/mu/wheels/*.whl
+/baseline_packages.json
+venv-pup/
+/local-scripts
+/mu/wheels/*.zip
