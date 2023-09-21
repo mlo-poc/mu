@@ -1,0 +1,14 @@
+Package: mu
+Version: 1.0.0~beta8
+Architecture: all
+Maintainer: Martin Lorenz <martin@lorenz.im>
+Installed-Size: 10827
+Depends: black | python3-supported-max (<= 3.5), python3-click, python3-flake8, python3-ipykernel, python3-ipython-genutils, python3-jupyter-client, python3-nudatus, python3-platformdirs (<< 3.0.0), python3-platformdirs (>= 2.0.0), python3-qtconsole, python3-requests, python3-semver, python3-serial, python3-virtualenv, python3-wheel, python3:any (>= 3.2~), python3-pyqt5.qtserialport
+Section: python
+Priority: optional
+Homepage: https://codewith.mu/
+Description: A simple editor for beginner programmers
+ A very simple code editor for kids, teachers and beginner programmers.
+ It's written in Python and works on Windows, OSX, Linux and Raspberry Pi.
+ This Version contains the Calliope-Extension written by the Calliope Team
+  - find it in https://github.com/calliope-edu/mu
